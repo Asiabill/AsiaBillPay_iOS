@@ -1,6 +1,6 @@
 **<h1>AsiaBillPay_iOS</h1>**
 
-> Welcome to Asiabill's iOS SDK. This library will help you accept card and alternative payments in your Android app.
+> Welcome to Asiabill's iOS SDK. This library will help you accept card and alternative payments in your iOS app.
 
 **<h2>asiabill iOS sdk对接步骤</h2>**
 
@@ -8,7 +8,7 @@
   
 APP通过初始化 ABPayOrderInfo 模型对象，将参数赋值给模型属性，调用模型方法 getPayOrderInfo 获取订单信息串，调用SDK支付接口。
   
-> **<h3>6. iOS sdk调用方法介绍<h3>**
+> **<h3>2. iOS sdk调用方法介绍<h3>**
   
   | 方法类型 | 示例| 
 | :------ | :------ |
