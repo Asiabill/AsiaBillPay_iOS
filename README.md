@@ -4,7 +4,7 @@
 
 **<h2>asiabill iOS sdk对接步骤</h2>**
 
-> **<h3>1.调用方式介绍（参照DEMO）<h3>**
+> **<h3>1. 调用方式介绍（参照DEMO）<h3>**
   
 APP通过初始化 ABPayOrderInfo 模型对象，将参数赋值给模型属性，调用模型方法 getPayOrderInfo 获取订单信息串，调用SDK支付接口。
   
