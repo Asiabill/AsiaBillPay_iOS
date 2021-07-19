@@ -288,14 +288,4 @@
     return [NSString stringWithFormat:@"%.f",interval];
 }
 
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    NSLog(@"-- %@",[self getTimestamp]);
-    NSLog(@"---hahhaha--");
-    NSLog(@"提交测试");
-    NSLog(@"终端命令提交");
-    NSLog(@"xcode提交");
-}
-
 @end
