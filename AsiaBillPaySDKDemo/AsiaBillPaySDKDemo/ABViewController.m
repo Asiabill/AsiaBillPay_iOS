@@ -294,6 +294,7 @@
     NSLog(@"-- %@",[self getTimestamp]);
     NSLog(@"---hahhaha--");
     NSLog(@"提交测试");
+    NSLog(@"终端命令提交");
 }
 
 @end
