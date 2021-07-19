@@ -291,8 +291,9 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    //NSLog(@"-- %@",[self getTimestamp]);
-    //NSLog(@"---hahhaha--");
+    NSLog(@"-- %@",[self getTimestamp]);
+    NSLog(@"---hahhaha--");
+    NSLog(@"提交测试");
 }
 
 @end
