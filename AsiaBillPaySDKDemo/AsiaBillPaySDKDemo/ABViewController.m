@@ -295,6 +295,7 @@
     NSLog(@"---hahhaha--");
     NSLog(@"提交测试");
     NSLog(@"终端命令提交");
+    NSLog(@"xcode提交");
 }
 
 @end
