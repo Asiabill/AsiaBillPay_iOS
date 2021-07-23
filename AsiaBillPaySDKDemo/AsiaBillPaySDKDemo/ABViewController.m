@@ -285,7 +285,6 @@
     NSDate *datenow = [NSDate date];
     NSTimeInterval interval = [datenow timeIntervalSince1970] *1000;
     
-    NSLog(@"提交");
     return [NSString stringWithFormat:@"%.f",interval];
 }
 
