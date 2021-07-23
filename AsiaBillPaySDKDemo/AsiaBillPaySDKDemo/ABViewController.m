@@ -285,6 +285,8 @@
     NSDate *datenow = [NSDate date];
     NSTimeInterval interval = [datenow timeIntervalSince1970] *1000;
     
+    NSLog(@"修改用户名和邮箱");
+    
     return [NSString stringWithFormat:@"%.f",interval];
 }
 
