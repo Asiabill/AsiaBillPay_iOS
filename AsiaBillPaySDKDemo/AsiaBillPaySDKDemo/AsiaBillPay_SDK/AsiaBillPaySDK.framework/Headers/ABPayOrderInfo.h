@@ -88,7 +88,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** 非必填参数 */
 
-/** 支付环境 */
+/** 支付环境 0:测试环境; 1:仿真环境; 2:线上生产环境 (支付环境不传默认是线上环境 2) */
 @property (nonatomic,assign) NSInteger paymentsEnvironment;
 
 /** 客人的所在州 */
@@ -99,9 +99,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** 备注 */
 @property (nonatomic,copy) NSString *remark;
-
-/** 【交易返回地址】3D跳转url */
-@property (nonatomic,copy) NSString *returnUrl;
 
 /** tokenType */
 @property (nonatomic,copy) NSString *tokenType;

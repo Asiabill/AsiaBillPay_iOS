@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AsiaBillPaySDK/ABPublicStatusTpye.h>
+#import "ABPublicDefine.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
