@@ -4,11 +4,29 @@
 
 **<h2>asiabill iOS sdk对接步骤</h2>**
 
-> **<h3>1. 调用方式介绍（参照DEMO）<h3>**
+> **<h3>1. 导入代码 <h3>**
+
+通过 CocoaPods : pod 'AsiaBillPay' 
+
+手动导入 ：启动 Xcode 把以下文件导入到项目中
+AsiaBillPaySDK.framework
+AsiaBillPaySDKResours.bundle
+
+> **<h3>2. 项目添加配置 <h3>**
+
+Targets –> Build Settings - > Other Linker Flags 添加 -Objc -all_load
+
+> **<h3>3. 增加头文件引用 <h3>** 
+
+	#import <AsiaBillPaySDK/AsiaBillPaySDK.h>
+
+> **<h3>4.  组装信息请求 <h3>** 
+	
+APP通过初始化 ABPayOrderInfo 模型对象，将参数赋值给模型属性，调用模型方法 getPayOrderInfo 获取订单信息串，\
+调用SDK支付接口。（详细可参见 Demo 中示例）
   
-APP通过初始化 ABPayOrderInfo 模型对象，将参数赋值给模型属性，调用模型方法 getPayOrderInfo 获取订单信息串，调用SDK支付接口。
   
-> **<h3>2. iOS sdk调用方法介绍<h3>**
+> **<h3>5. iOS sdk调用方法介绍<h3>**
   
   | 方法类型 | 示例| 
 | :------ | :------ |
