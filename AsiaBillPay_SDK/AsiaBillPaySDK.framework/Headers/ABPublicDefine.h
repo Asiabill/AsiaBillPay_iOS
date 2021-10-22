@@ -22,8 +22,7 @@ typedef NS_ENUM(NSInteger, ResultCode) {
 };
 
 
-/** 支付(查询)结果返回信息 */
+/** 支付结果返回信息 */
 typedef void(^CompletionBlock)(NSDictionary *resultDic);
-/** 错误信息上传返回结果 */
-typedef void(^CashCompletionBlock)(NSInteger statusCode);
+
 

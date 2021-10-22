@@ -76,11 +76,11 @@
 
     // NOTE: 支付按钮，模拟支付流程
     CGFloat originalPosY = [UIApplication sharedApplication].statusBarFrame.size.height + 80.0f;
-    [self generateBtnWithTitle:@"支付_2.0" selector:@selector(doABPay_2) posy:originalPosY];
+    [self generateBtnWithTitle:@"信用卡支付_2.0" selector:@selector(doABPay_2) posy:originalPosY];
     
     // NOTE: 测试按钮
     originalPosY += (AB_BUTTON_HEIGHT + AB_SUBVIEW_YGAP);
-    [self generateBtnWithTitle:@"支付_1.0" selector:@selector(doABPay_1) posy:originalPosY];
+//    [self generateBtnWithTitle:@"支付_1.0" selector:@selector(doABPay_1) posy:originalPosY];
 }
 
 - (void)generateBtnWithTitle:(NSString*)title selector:(SEL)selector posy:(CGFloat)posy
@@ -99,10 +99,8 @@
 - (void)doABPay_2
 {
     ABPayOrderInfo *orderInfo = [self setPayOrderInfo];
-
-    NSString *orderInfoStr = [orderInfo getPayOrderInfo];
     
-    [[ABPayManager sharedManager] payOrder:orderInfoStr fromScheme:@"" callback:^(NSDictionary *resultDic) {
+    [[ABPayManager sharedManager] payOrder:orderInfo fromScheme:@"" callback:^(NSDictionary *resultDic) {
             
         
     }];
@@ -114,9 +112,7 @@
     
     ABPayOrderInfo *orderInfo = [self setLocalPayOrderInfo];
 
-    NSString *orderInfoStr = [orderInfo getPayOrderInfo];
-
-    [[ABPayManager sharedManager] payOrder:orderInfoStr fromScheme:@"" callback:^(NSDictionary *resultDic) {
+    [[ABPayManager sharedManager] payOrder:orderInfo fromScheme:@"" callback:^(NSDictionary *resultDic) {
             
         NSLog(@"---1.0支付返回数据：%@",resultDic);
         
@@ -184,9 +180,6 @@
     
     order.signkey = @"12345678";
 
-    // 客户端类型
-    order.isMobile = 2;
-    
     // 支付环境 0:测试环境; 1:仿真环境; 2:线上生产环境 (支付环境不传默认是线上环境 2)
     order.paymentsEnvironment = 0;
     
@@ -203,12 +196,12 @@
     
     // 商户号
     //order.merNo = @"12167";
-    order.merNo = _merNoTF.text.length ? _merNoTF.text : @"12172";
+    order.merNo = _merNoTF.text.length ? _merNoTF.text : @"12345";
     
     
     //网关接入号
     //order.gatewayNo = @"12167001";
-    order.gatewayNo = _gatewayNoTF.text.length ? _gatewayNoTF.text : @"12172002";
+    order.gatewayNo = _gatewayNoTF.text.length ? _gatewayNoTF.text : @"12345004";
     
     //商户订单号
     //order.orderNo = @"1624957682021";
@@ -226,7 +219,7 @@
     
     // 信用卡卡种
 //    order.CardType = @[@"Visa",@"Master card",@"American Express",@"JCB",@"Discover",@"Maestro",@"Dinners club"];
-    order.CardType = @[@"JCB",@"Discover",@"Maestro",@"Dinners club"];
+    order.cardType = @[@"JCB",@"Discover",@"Maestro",@"Dinners club"];
 
     // 名
 //    order.firstName = @"CL";
@@ -239,7 +232,7 @@
     order.email = @"532539937@qq.com";
 
     // 电话
-    order.phone = @"1 650-555-5555";
+    order.phone = @"+1 650-555-5555";
 
     // 账单国家
     order.country = @"US";
@@ -259,9 +252,6 @@
     
     order.signkey = @"12345678";
 
-    // 客户端类型
-    order.isMobile = 2;
-    
     //信用卡支付方式
     order.tokenType = @"1";
     

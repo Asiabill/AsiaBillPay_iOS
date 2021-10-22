@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *paymentMethod;
 
 /** 信用卡卡种 */
-@property (nonatomic,strong) NSArray *CardType;
+@property (nonatomic,strong) NSArray *cardType;
 
 /** 名 */
 @property (nonatomic,copy) NSString *firstName;
@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 /** 姓 */
 @property (nonatomic,copy) NSString *lastName;
 
-/** 邮件 */
+/** 邮箱 */
 @property (nonatomic,copy) NSString *email;
 
 /** 电话 */
@@ -58,31 +58,18 @@ NS_ASSUME_NONNULL_BEGIN
 /** 客人的邮编 */
 @property (nonatomic,copy) NSString *zip;
 
-/** 客户端类型 */
-@property (nonatomic,assign) NSInteger isMobile;
-
 /** signkey */
 @property (nonatomic,copy) NSString *signkey;
 
-/** 信用卡支付方式 */
-@property (nonatomic,copy) NSString *TokenPayType;
 
 
-/** 2.0信用卡输入信息,用户不需要传,输入即可 */
-/** 卡号 */
-@property (nonatomic,copy) NSString *cardNo;
-
-/** 有效期 - 年 */
-@property (nonatomic,copy) NSString *cardExpireYear;
-
-/** 有效期 - 月 */
-@property (nonatomic,copy) NSString *cardExpireMonth;
-
-/** CVV */
-@property (nonatomic,copy) NSString *cardSecurityCode;
-
-
-
+/** 2.1信用卡支付参数,必填 */
+/** 令牌 30分钟内有效,支付完成 (不管成功、失败都要重新获取) 重新获取 */
+@property (nonatomic,copy) NSString *sessionToken;
+/** customerID */
+@property (nonatomic,copy) NSString *customerId;
+/** 选择已保存卡框是否自定义 (0:默认SDK对话框 UI (SDK托管); 2:进入国际信用卡支付页面,手动输入卡号) */
+@property (nonatomic,assign) NSInteger viewManagerType;
 
 
 
@@ -107,12 +94,21 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSArray *goodsDetail;
 
 
+/** 信用卡输入信息,用户不需要传,输入即可 */
+/** 卡号 */
+@property (nonatomic,copy) NSString *cardNo;
+
+/** 有效期 - 年 */
+@property (nonatomic,copy) NSString *cardExpireYear;
+
+/** 有效期 - 月 */
+@property (nonatomic,copy) NSString *cardExpireMonth;
+
+/** CVV */
+@property (nonatomic,copy) NSString *cardSecurityCode;
 
 
 
-
-/// 获取订单信息串
-- (NSString *)getPayOrderInfo;
 
 
 /// 字典转模型

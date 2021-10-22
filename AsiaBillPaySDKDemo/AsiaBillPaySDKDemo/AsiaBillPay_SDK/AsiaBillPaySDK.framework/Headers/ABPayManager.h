@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ABPublicDefine.h"
+@class ABPayOrderInfo;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,10 +19,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /// 支付接口
-/// @param externalInfo 订单信息
-/// @param schemeStr 调用支付的app注册在info.plist中的scheme (暂时无用)
+/// @param orderInfo 订单信息
+/// @param schemeStr 调用支付的app注册在info.plist中的scheme (暂时无用,传空就行,例:@"")
 /// @param completionBlock 支付结果回调Block
-- (void)payOrder:(NSString *)externalInfo fromScheme:(NSString *)schemeStr callback:(CompletionBlock)completionBlock;
+- (void)payOrder:(ABPayOrderInfo *)orderInfo fromScheme:(NSString *)schemeStr callback:(CompletionBlock)completionBlock;
+
+
+/// 处理第三方app支付后跳回商户app携带的支付结果url
+/// @param resultUrl 第三方app返回的支付结果url
+/// @param completionBlock 支付结果回调Block
+- (void)processOrderWithPaymentResult:(NSURL *)resultUrl standbyCallback:(CompletionBlock)completionBlock;
+
 
 @end
 
