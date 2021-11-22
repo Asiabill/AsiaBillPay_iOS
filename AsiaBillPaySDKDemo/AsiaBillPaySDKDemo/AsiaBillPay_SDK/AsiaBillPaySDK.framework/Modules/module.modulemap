@@ -1,6 +1,0 @@
-framework module AsiaBillPaySDK {
-  umbrella header "AsiaBillPaySDK.h"
-
-  export *
-  module * { export * }
-}
