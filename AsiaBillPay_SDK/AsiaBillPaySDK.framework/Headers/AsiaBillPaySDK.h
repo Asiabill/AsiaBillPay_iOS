@@ -22,4 +22,7 @@ FOUNDATION_EXPORT const unsigned char AsiaBillPaySDKVersionString[];
 #import <AsiaBillPaySDK/ABPayOrderInfo.h>
 /** 公开的枚举等定义 */
 #import <AsiaBillPaySDK/ABPublicDefine.h>
+/** 提示框 */
+#import <AsiaBillPaySDK/ZSProgressHUD.h>
+
 
