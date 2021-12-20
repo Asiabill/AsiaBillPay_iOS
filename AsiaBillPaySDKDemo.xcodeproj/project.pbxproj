@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		57324873276B28D700AB3C90 /* AsiaBillPaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57324872276B28D700AB3C90 /* AsiaBillPaySDK.framework */; };
 		57324875276B294700AB3C90 /* AsiaBillPaySDKResours.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 57324874276B294700AB3C90 /* AsiaBillPaySDKResours.bundle */; };
+		573248AD2770936B00AB3C90 /* AsiaBillPaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573248AC2770936B00AB3C90 /* AsiaBillPaySDK.framework */; };
+		573248B52770955400AB3C90 /* ABHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 573248B12770955300AB3C90 /* ABHttpRequest.m */; };
+		573248B62770955400AB3C90 /* ABPaymentResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 573248B32770955300AB3C90 /* ABPaymentResultView.m */; };
+		573248B72770955400AB3C90 /* ABPaymentResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 573248B42770955400AB3C90 /* ABPaymentResultView.xib */; };
+		573248B92770962E00AB3C90 /* ABViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 573248B82770962E00AB3C90 /* ABViewController.xib */; };
 		576FC37826A191DA00DB7B0F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 576FC37726A191DA00DB7B0F /* AppDelegate.m */; };
 		576FC38126A191DA00DB7B0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 576FC37F26A191DA00DB7B0F /* Main.storyboard */; };
 		576FC38326A191DF00DB7B0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 576FC38226A191DF00DB7B0F /* Assets.xcassets */; };
@@ -16,12 +20,18 @@
 		576FC38926A191DF00DB7B0F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 576FC38826A191DF00DB7B0F /* main.m */; };
 		578FF3F82722E220005B8E4E /* AsiaBillPaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 578FF3F62722E201005B8E4E /* AsiaBillPaySDK.framework */; };
 		579AADA626B3B51D0056642D /* ABViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 579AADA326B3B51D0056642D /* ABViewController.m */; };
-		579AADA726B3B51D0056642D /* ABViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 579AADA526B3B51D0056642D /* ABViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		57324872276B28D700AB3C90 /* AsiaBillPaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AsiaBillPaySDK.framework; sourceTree = "<group>"; };
 		57324874276B294700AB3C90 /* AsiaBillPaySDKResours.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AsiaBillPaySDKResours.bundle; sourceTree = "<group>"; };
+		573248AC2770936B00AB3C90 /* AsiaBillPaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AsiaBillPaySDK.framework; sourceTree = "<group>"; };
+		573248AE277093EA00AB3C90 /* ABHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABHeader.h; sourceTree = "<group>"; };
+		573248B02770955300AB3C90 /* ABHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABHttpRequest.h; sourceTree = "<group>"; };
+		573248B12770955300AB3C90 /* ABHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABHttpRequest.m; sourceTree = "<group>"; };
+		573248B22770955300AB3C90 /* ABPaymentResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABPaymentResultView.h; sourceTree = "<group>"; };
+		573248B32770955300AB3C90 /* ABPaymentResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABPaymentResultView.m; sourceTree = "<group>"; };
+		573248B42770955400AB3C90 /* ABPaymentResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ABPaymentResultView.xib; sourceTree = "<group>"; };
+		573248B82770962E00AB3C90 /* ABViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ABViewController.xib; sourceTree = "<group>"; };
 		576FC37326A191DA00DB7B0F /* AsiaBillPaySDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsiaBillPaySDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		576FC37626A191DA00DB7B0F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		576FC37726A191DA00DB7B0F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -37,7 +47,6 @@
 		578FF3F72722E201005B8E4E /* AsiaBillPaySDKResours.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AsiaBillPaySDKResours.bundle; sourceTree = "<group>"; };
 		579AADA326B3B51D0056642D /* ABViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABViewController.m; sourceTree = "<group>"; };
 		579AADA426B3B51D0056642D /* ABViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABViewController.h; sourceTree = "<group>"; };
-		579AADA526B3B51D0056642D /* ABViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ABViewController.xib; sourceTree = "<group>"; };
 		579AADB526B3F8500056642D /* en-IN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-IN"; path = "en-IN.lproj/Main.strings"; sourceTree = "<group>"; };
 		579AADB626B3F8500056642D /* en-IN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-IN"; path = "en-IN.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		579AADB726B3F8620056642D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
@@ -64,7 +73,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				578FF3F82722E220005B8E4E /* AsiaBillPaySDK.framework in Frameworks */,
-				57324873276B28D700AB3C90 /* AsiaBillPaySDK.framework in Frameworks */,
+				573248AD2770936B00AB3C90 /* AsiaBillPaySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +105,13 @@
 				576FC37726A191DA00DB7B0F /* AppDelegate.m */,
 				579AADA426B3B51D0056642D /* ABViewController.h */,
 				579AADA326B3B51D0056642D /* ABViewController.m */,
-				579AADA526B3B51D0056642D /* ABViewController.xib */,
+				573248B82770962E00AB3C90 /* ABViewController.xib */,
+				573248AE277093EA00AB3C90 /* ABHeader.h */,
+				573248B02770955300AB3C90 /* ABHttpRequest.h */,
+				573248B12770955300AB3C90 /* ABHttpRequest.m */,
+				573248B22770955300AB3C90 /* ABPaymentResultView.h */,
+				573248B32770955300AB3C90 /* ABPaymentResultView.m */,
+				573248B42770955400AB3C90 /* ABPaymentResultView.xib */,
 				576FC37F26A191DA00DB7B0F /* Main.storyboard */,
 				576FC38226A191DF00DB7B0F /* Assets.xcassets */,
 				576FC38426A191DF00DB7B0F /* LaunchScreen.storyboard */,
@@ -129,7 +144,7 @@
 		5793BDED2745112E0012C6A4 /* AsiaBillPay_SDK */ = {
 			isa = PBXGroup;
 			children = (
-				57324872276B28D700AB3C90 /* AsiaBillPaySDK.framework */,
+				573248AC2770936B00AB3C90 /* AsiaBillPaySDK.framework */,
 				57324874276B294700AB3C90 /* AsiaBillPaySDKResours.bundle */,
 			);
 			path = AsiaBillPay_SDK;
@@ -212,9 +227,10 @@
 			files = (
 				576FC38626A191DF00DB7B0F /* LaunchScreen.storyboard in Resources */,
 				576FC38326A191DF00DB7B0F /* Assets.xcassets in Resources */,
-				579AADA726B3B51D0056642D /* ABViewController.xib in Resources */,
 				57324875276B294700AB3C90 /* AsiaBillPaySDKResours.bundle in Resources */,
 				576FC38126A191DA00DB7B0F /* Main.storyboard in Resources */,
+				573248B72770955400AB3C90 /* ABPaymentResultView.xib in Resources */,
+				573248B92770962E00AB3C90 /* ABViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,8 +241,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				573248B62770955400AB3C90 /* ABPaymentResultView.m in Sources */,
 				576FC37826A191DA00DB7B0F /* AppDelegate.m in Sources */,
 				579AADA626B3B51D0056642D /* ABViewController.m in Sources */,
+				573248B52770955400AB3C90 /* ABHttpRequest.m in Sources */,
 				576FC38926A191DF00DB7B0F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,6 +419,7 @@
 					"$(PROJECT_DIR)/AsiaBillPay_SDK",
 				);
 				INFOPLIST_FILE = AsiaBillPaySDKDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -416,7 +435,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.asiabill.AsiaBillPaySDKGitHubDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -437,6 +456,7 @@
 					"$(PROJECT_DIR)/AsiaBillPay_SDK",
 				);
 				INFOPLIST_FILE = AsiaBillPaySDKDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -453,7 +473,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.asiabill.AsiaBillPaySDKGitHubDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
