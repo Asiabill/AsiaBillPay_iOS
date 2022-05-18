@@ -35,7 +35,7 @@ Targets –> Build Settings - > Other Linker Flags 添加 -Objc -all_load
 
 > **<h3>5.  设置订单信息 <h3>** 
 	
-APP通过初始化 ABPayOrderInfo 模型对象，来收集订单，调用SDK支付接口。（详细可参见 Demo 中示例）
+APP通过初始化 ABPayOrderInfo 模型对象，来收集订单信息，调用SDK支付接口。（详细可参见 Demo 中示例）
 	
   
 > **<h3>6. iOS sdk调用方法介绍<h3>**
