@@ -39,7 +39,7 @@ APP通过初始化 ABPayOrderInfo 模型对象，来收集订单信息，调用S
 	
   
 > **<h3>6. iOS sdk调用方法介绍<h3>**
-	
+
 | 方法类型 | 示例| 
 | :------ | :------ |
 | 方法原型	       |    - (void)payOrder:(ABPayOrderInfo *)orderInfo fromScheme:(NSString *)schemeStr callback:(CompletionBlock)completionBlock;   |
