@@ -54,7 +54,7 @@ APP通过初始化 ABPayOrderInfo 模型对象，来收集订单信息，调用S
 | 返回值	          |        支付回调 completionBlock, resultDic支付返回参数 （详见 7）     |
 	
 
- > **<h3>7 ResultCode (sdk返回code码关系表) <h3>**
+ > **<h3>7. ResultCode (sdk返回code码关系表) <h3>**
   
 | ResultCode（返回码） | payment result（订单结果） | 
 | ------ | ------ |
