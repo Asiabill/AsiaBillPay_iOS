@@ -33,21 +33,21 @@
 	（这里建议商户把 商户号（merNo）、网关接入号（gatewayNo）、签名密钥（signkey ）等相关参数也放到服务器和 sessionToken 一样返回），
 	这些参数会用于后续支付流程的处理，商户需要从 server 端传递到 mobile 端供SDK中的API使用，请妥善保存，避免 signkey 等信息暴露在mobile客户端。
 
-> **<h4>2. 创建 customer <h3>**
+> **<h4>2. 创建 customer <h4>**
 
 **<h5>商户服务端调用 创建客户接口：/customers，获取customerId。<h5>**
 	
 	创建成功商户可自行保存 customerId，后续先存后付、付后存卡都需要用到 customerId 来保存卡和获取已保存的卡信息列表，只有一次性付款不需要 customerId 
 
-> **<h4>3. 收集订单信息 <h3>**
+> **<h4>3. 收集订单信息 <h4>**
 	
 **<h5>APP通过初始化 ABPayOrderInfo 模型对象，来收集订单信息，调用SDK支付接口：<h5>**
 	
 	- (void)payOrder:(ABPayOrderInfo *)orderInfo fromScheme:(NSString *)schemeStr callback:(CompletionBlock)completionBlock;
 
-> **<h4>4. 发起扣款 <h3>**
+> **<h4>4. 发起扣款 <h4>**
 
-SDK 检查商户有没有传入 customerId:
+**<h5>SDK 检查商户有没有传入 customerId:<h5>**
 	
 	有：SDK会根据商户传入的 customerId 去获取已保存的卡列表，并在展示在支付区域。这里分两种场景:
 	1.付后存卡：用户在首次支付时，在收集卡信息界面勾选了保存卡选项框，可以通过customerId查询之前保存的卡支付信息，
@@ -56,8 +56,7 @@ SDK 检查商户有没有传入 customerId:
 		paymentMethod，并调用 confirmPaymentMethod API，通过商户传入的 customerId 将当前客户和卡信息进行绑定，
 		方便在之后的场景或延后发起扣款。
 	无：SDK展示收集卡信息界面，用户手动输入卡信息，进行一次性支付
-	
-	
+
 > **<h3>5. iOS sdk调用方法介绍<h3>**
 
 > 对接商户准备工作（商户调用sdk准备工作，可参照demo）
