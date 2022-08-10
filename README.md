@@ -5,12 +5,12 @@
 **<h2>asiabill iOS sdk对接步骤</h2>**
 
 > **<h3>1. 导入代码 <h3>**
-
-通过 CocoaPods : 
-
+	
+> **<h4>通过 CocoaPods : <h3>**
+	
 > pod 'AsiaBillPay'
 	
-  手动导入 : 启动 Xcode 把以下文件导入到项目中
+> **<h4>手动导入 : 启动 Xcode 把以下文件导入到项目中<h3>**
 	
 > AsiaBillPaySDK.framework
 	
