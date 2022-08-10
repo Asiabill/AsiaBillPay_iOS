@@ -6,11 +6,15 @@
 
 > **<h3>1. 导入代码 <h3>**
 
-通过 CocoaPods : pod 'AsiaBillPay' 
+通过 CocoaPods : 
 
-手动导入 ：启动 Xcode 把以下文件导入到项目中
-AsiaBillPaySDK.framework
-AsiaBillPaySDKResours.bundle
+> pod 'AsiaBillPay' 
+
+手动导入 ：
+
+> 启动 Xcode 把以下文件导入到项目中
+> AsiaBillPaySDK.framework
+> AsiaBillPaySDKResours.bundle
 
 > **<h3>2. 项目添加配置 <h3>**
 
