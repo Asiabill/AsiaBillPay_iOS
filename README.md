@@ -8,15 +8,13 @@
 	
 > **<h4>通过 CocoaPods : <h3>**
 	
-> pod 'AsiaBillPay'
+	pod 'AsiaBillPay'
 	
 > **<h4>手动导入 : 启动 Xcode 把以下文件导入到项目中<h3>**
 	
-> AsiaBillPaySDK.framework
+	AsiaBillPaySDK.framework
+	AsiaBillPaySDKResours.bundle
 	
-> AsiaBillPaySDKResours.bundle
-	
-
 > **<h3>2. 项目添加配置 <h3>**
 
 Targets –> Build Settings - > Other Linker Flags 添加 -Objc -all_load
