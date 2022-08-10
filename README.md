@@ -25,8 +25,15 @@ Targets –> Build Settings - > Other Linker Flags 添加 -Objc -all_load
 > **<h4>1. 创建 sessionToken （注意 sessionToken 每次交易都要创建.）<h3>**
 	
 商户服务端调用 /sessionToken 接口创建本次交易的会话即 sessionToken。（建议商户通过服务端调用 /sessionToken 接口通过该接口可以获取到 sessionToken，该参数会用于后续支付流程的处理，商户需要从 server 端传递到 mobile 端供SDK中的API使用，请妥善保存，避免 signkey 等信息暴露在mobile客户端。）
- 
 
+> **<h4>2. 创建 customer <h3>**
+
+商户服务端调用 创建客户接口：/customers，获取customerId。（ 创建成功商户可自行保存 customerId，后续先存后付、付后存卡都需要用到 customerId 来保存卡和获取已保存的卡信息列表，只有一次性付款不需要 customerId ）
+
+> **<h4>3. 收集订单信息 <h3>**
+
+APP通过初始化 ABPayOrderInfo 模型对象，来收集订单信息，调用SDK支付接口：
+- (void)payOrder:(ABPayOrderInfo *)orderInfo fromScheme:(NSString *)schemeStr callback:(CompletionBlock)completionBlock;
 
 > **<h3>5.  设置订单信息 <h3>** 
 	
