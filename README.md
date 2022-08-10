@@ -37,13 +37,13 @@
 
 **<h5>商户服务端调用 创建客户接口：/customers，获取customerId。<h5>**
 	
-	> 创建成功商户可自行保存 customerId，后续先存后付、付后存卡都需要用到 customerId 来保存卡和获取已保存的卡信息列表，只有一次性付款不需要 customerId 
+	创建成功商户可自行保存 customerId，后续先存后付、付后存卡都需要用到 customerId 来保存卡和获取已保存的卡信息列表，只有一次性付款不需要 customerId 
 
 > **<h4>3. 收集订单信息 <h3>**
-
-APP通过初始化 ABPayOrderInfo 模型对象，来收集订单信息，调用SDK支付接口：
-
-> - (void)payOrder:(ABPayOrderInfo *)orderInfo fromScheme:(NSString *)schemeStr callback:(CompletionBlock)completionBlock;
+	
+**<h5>APP通过初始化 ABPayOrderInfo 模型对象，来收集订单信息，调用SDK支付接口：<h5>**
+	
+	- (void)payOrder:(ABPayOrderInfo *)orderInfo fromScheme:(NSString *)schemeStr callback:(CompletionBlock)completionBlock;
 
 > **<h4>4. 发起扣款 <h3>**
 
