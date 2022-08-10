@@ -29,7 +29,9 @@
 	
 	商户服务端调用 /sessionToken 接口创建本次交易的会话即 sessionToken。
 	
-	建议商户通过服务端调用 /sessionToken 接口获取到 sessionToken（这里建议商户把 商户号（merNo）、网关接入号（gatewayNo）、签名密钥（signkey ）等相关参数也放到服务器和 sessionToken 一样返回），这些参数会用于后续支付流程的处理，商户需要从 server 端传递到 mobile 端供SDK中的API使用，请妥善保存，避免 signkey 等信息暴露在mobile客户端。
+		建议商户通过服务端调用 /sessionToken 接口获取到 sessionToken
+		（这里建议商户把 商户号（merNo）、网关接入号（gatewayNo）、签名密钥（signkey ）等相关参数也放到服务器和 sessionToken 一样返回），
+		这些参数会用于后续支付流程的处理，商户需要从 server 端传递到 mobile 端供SDK中的API使用，请妥善保存，避免 signkey 等信息暴露在mobile客户端。
 
 > **<h4>2. 创建 customer <h3>**
 
