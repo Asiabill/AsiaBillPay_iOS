@@ -38,12 +38,14 @@ APP通过初始化 ABPayOrderInfo 模型对象，来收集订单信息，调用S
 > **<h4>4. 发起扣款 <h3>**
 
 SDK 检查商户有没有传入 customerId:
-	
+
 	有：SDK会根据商户传入的 customerId 去获取已保存的卡列表，并在展示在支付区域。这里分两种场景:
 		1.付后存卡：用户在首次支付时，在收集卡信息界面勾选了保存卡选项框，可以通过customerId查询之前保存的卡支付信息，
 		并在支付区域展示支付方式列表以供用户选择进行支付。
 		2.先存后付：用户点击了 add 添加新卡按钮，SDK展示收集卡信息界面，用户手动输入卡信息，并且选中存卡选项，SDK会创建
-		paymentMethod，并调用 confirmPaymentMethod API，通过商户传入的 customerId 将当前客户和卡信息进行绑定，方便在之后的场景或延后发起扣款。
+		paymentMethod，并调用 confirmPaymentMethod API，通过商户传入的 customerId 将当前客户和卡信息进行绑定，
+		方便在之后的场景或延后发起扣款。
+	
 	
 	
 		
