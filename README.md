@@ -30,7 +30,9 @@ Targets –> Build Settings - > Other Linker Flags 添加 -Objc -all_load
 
 > **<h4>2. 创建 customer <h3>**
 
-商户服务端调用 创建客户接口：/customers，获取customerId。（ 创建成功商户可自行保存 customerId，后续先存后付、付后存卡都需要用到 customerId 来保存卡和获取已保存的卡信息列表，只有一次性付款不需要 customerId ）
+商户服务端调用 创建客户接口：/customers，获取customerId。
+
+> 创建成功商户可自行保存 customerId，后续先存后付、付后存卡都需要用到 customerId 来保存卡和获取已保存的卡信息列表，只有一次性付款不需要 customerId 
 
 > **<h4>3. 收集订单信息 <h3>**
 
