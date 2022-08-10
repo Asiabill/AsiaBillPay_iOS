@@ -62,10 +62,14 @@ SDK 检查商户有没有传入 customerId:
 | 返回值	          |        支付回调 completionBlock, resultDic支付返回参数 （详见 7）     |
 	
 
- > **<h3>7. ResultCode (sdk返回code码关系表) <h3>**
+ > **<h3>6. ResultCode (sdk返回code码关系表) <h3>**
   
 | ResultCode（返回码） | payment result（订单结果） | 
 | ------ | ------ |
 | 9900            |    Successful purchase  （支付成功）        |
 | 7700            |    ProFailure purchase  （支付失败）        |
 | 6600            |    Order pending        （交易待处理）      |
+
+· 支付过程中，返回结果中redirectUrl为空，则不需要进行3DS验证，将解析后的交易结果返回给SDK端，SDK端跳转用户到交易结果展示页面。
+· 支付过程中，返回结果中redirectUrl不为空，则需要进行3DS验证，将解析后的redirectUrl返回给SDK端，SDK端跳转用户到3DS页面进行验证，
+3DS验证完成后，AsiaBill将跳转到商户的returnUrl地址（请参阅 支付结果跳转 ），商户端验证签名并解析数据后，将解析结果（成功、失败）返回给SDK端，SDK端跳转用户到交易结果展示页面。
