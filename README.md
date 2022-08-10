@@ -38,7 +38,7 @@ Targets –> Build Settings - > Other Linker Flags 添加 -Objc -all_load
 
 APP通过初始化 ABPayOrderInfo 模型对象，来收集订单信息，调用SDK支付接口：
 
-	> - (void)payOrder:(ABPayOrderInfo *)orderInfo fromScheme:(NSString *)schemeStr callback:(CompletionBlock)completionBlock;
+> - (void)payOrder:(ABPayOrderInfo *)orderInfo fromScheme:(NSString *)schemeStr callback:(CompletionBlock)completionBlock;
 
 > **<h4>4. 发起扣款 <h3>**
 
