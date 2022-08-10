@@ -35,6 +35,11 @@ Targets –> Build Settings - > Other Linker Flags 添加 -Objc -all_load
 APP通过初始化 ABPayOrderInfo 模型对象，来收集订单信息，调用SDK支付接口：
 - (void)payOrder:(ABPayOrderInfo *)orderInfo fromScheme:(NSString *)schemeStr callback:(CompletionBlock)completionBlock;
 
+> **<h4>4. 发起扣款 <h3>**
+
+SDK 检查商户有没有传入 customerId:
+	有：SDK会根据商户传入的 customerId 去获取已保存的卡列表，并在展示在支付区域。这里分两种场景，1.付后存卡：用户在首次支付时，
+
 > **<h3>5.  设置订单信息 <h3>** 
 	
 APP通过初始化 ABPayOrderInfo 模型对象，来收集订单信息，调用SDK支付接口。（详细可参见 Demo 中示例）
