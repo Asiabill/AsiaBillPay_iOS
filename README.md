@@ -8,8 +8,8 @@
 
 通过 CocoaPods : 
 
-> pod 'AsiaBillPay' 
-
+> pod 'AsiaBillPay'
+	
 手动导入 : 启动 Xcode 把以下文件导入到项目中
 	
 > AsiaBillPaySDK.framework
