@@ -20,18 +20,11 @@ Targets –> Build Settings - > Other Linker Flags 添加 -Objc -all_load
 
 	#import <AsiaBillPaySDK/AsiaBillPaySDK.h>
 	
-> **<h3>4. 添加 商户号、网关号 和 signkey （商户可以在自己的头文件进行宏定义，如下示例）<h3>**
-	
-	/** 商户号 */
-	#define KR_MERNO @"12230"
+> **<h3>信用卡支付：<h3>**
+> **<h4>1. 创建 sessionToken （注意 sessionToken 每次交易都要创建.）<h3>**
+  商户服务端调用 /sessionToken 接口创建本次交易的会话即 sessionToken。（建议商户通过服务端调用 /sessionToken 接口通过该接口可以获取到 sessionToken，该参数会用于后续支付流程的处理，商户需要从 server 端传递到 mobile 端供SDK中的API使用，请妥善保存，避免 signkey 等信息暴露在mobile客户端。）
+ 
 
-	/** 网关号 */
-	#define KR_GATEWAYNO @"12230001"
-
-	/** Signkey */
-	#define KR_SIGNKEY @"12345678"
-	
-	paymentsEnvironment: 支付环境 0:测试环境; 1:仿真环境; 2:线上生产环境 (支付环境不传默认是线上环境 2)
 
 > **<h3>5.  设置订单信息 <h3>** 
 	
