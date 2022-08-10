@@ -20,9 +20,11 @@ Targets –> Build Settings - > Other Linker Flags 添加 -Objc -all_load
 
 	#import <AsiaBillPaySDK/AsiaBillPaySDK.h>
 	
-> **<h3>信用卡支付：<h3>**
+> **<h3>4. 信用卡支付：<h3>**
+	
 > **<h4>1. 创建 sessionToken （注意 sessionToken 每次交易都要创建.）<h3>**
-  商户服务端调用 /sessionToken 接口创建本次交易的会话即 sessionToken。（建议商户通过服务端调用 /sessionToken 接口通过该接口可以获取到 sessionToken，该参数会用于后续支付流程的处理，商户需要从 server 端传递到 mobile 端供SDK中的API使用，请妥善保存，避免 signkey 等信息暴露在mobile客户端。）
+	
+商户服务端调用 /sessionToken 接口创建本次交易的会话即 sessionToken。（建议商户通过服务端调用 /sessionToken 接口通过该接口可以获取到 sessionToken，该参数会用于后续支付流程的处理，商户需要从 server 端传递到 mobile 端供SDK中的API使用，请妥善保存，避免 signkey 等信息暴露在mobile客户端。）
  
 
 
