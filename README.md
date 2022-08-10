@@ -17,7 +17,7 @@
 	
 > **<h3>2. 项目添加配置 <h3>**
 
-Targets –> Build Settings - > Other Linker Flags 添加 -Objc -all_load
+	Targets –> Build Settings - > Other Linker Flags 添加 -Objc -all_load
 
 > **<h3>3. 增加头文件引用 <h3>** 
 
