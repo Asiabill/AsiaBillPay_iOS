@@ -35,9 +35,9 @@
 
 > **<h4>2. 创建 customer <h4>**
 	
-**<h5>顾客唯一标识 customerId（非必须）：Asiabill后台会维护一套顾客管理系统支持客户端付款时保存卡功能，方便顾客未来支付。
+**<h5>顾客唯一标识 customerId（非必须）：Asiabill后台会维护一套顾客管理系统支持客户端付款时保存卡功能，方便顾客未来支付。<h5>**
 
-	商户服务端调用 创建客户接口：/customers，获取customerId。<h5>**
+**<h5>	商户服务端调用 创建客户接口：/customers，获取customerId。<h5>**
 	
 	创建成功商户可自行保存 customerId，后续先存后付、付后存卡都需要用到 customerId 来保存卡和获取已保存的卡信息列表，只有一次性付款不需要 customerId 
 
