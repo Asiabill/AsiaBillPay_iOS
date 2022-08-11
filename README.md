@@ -79,7 +79,16 @@
 | 7700            |    ProFailure purchase  （支付失败）        |
 | 6600            |    Order pending        （交易待处理）      |
 
-> 支付过程中，返回结果中redirectUrl为空，则不需要进行3DS验证，将解析后的交易结果返回给SDK端，SDK端跳转用户到交易结果展示页面。
-	
-> 支付过程中，返回结果中redirectUrl不为空，则需要进行3DS验证，将解析后的redirectUrl返回给SDK端，SDK端跳转用户到3DS页面进行验证，
-3DS验证完成后，AsiaBill将跳转到商户的returnUrl地址，商户端验证签名并解析数据后，将解析结果（成功、失败）返回给SDK端，SDK端跳转用户到交易结果展示页面。
+- 支付过程中，返回结果中redirectUrl为空，则不需要进行3DS验证，将解析后的交易结果返回给SDK端，SDK端跳转用户到交易结果展示页面。
+
+- 支付过程中，返回结果中redirectUrl不为空，则需要进行3DS验证，将解析后的redirectUrl返回给SDK端，SDK端跳转用户到3DS页面进行验证，
+3DS验证完成后，AsiaBill将跳转到商户的returnUrl地址（请参阅 <a href="https://asiabill.gitbook.io/api-explorer/webhook/zhi-fu-jie-guo-tiao-zhuan" target="_blank">支付结果跳转</a> ），商户端验证签名并解析数据后，将解析结果（成功、失败）返回给SDK端，SDK端跳转用户到交易结果展示页面。
+
+> **<h3>6. webhook 通知处理<h3>**
+
+在订单完成后，AsiaBill系统会触发webhook，调用商户交易时给定的callbackUrl，来通知商户交易结果状态，详情请参阅  <a href="https://asiabill.gitbook.io/api-explorer/webhook/gai-shu" target="_blank">webhook</a> 
+
+```
+仅接收浏览器端的支付结果是存在风险的，商户网站可能因用户网络或者用户关闭网页导致不能获取到支付结果。建议商户接收 AsiaBill 的支付
+结果异步通知，可以通过在收集payInfoBean支付信息步骤中设置 callbackUrl 来指定接收地址。
+```
