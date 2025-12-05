@@ -3,7 +3,7 @@ Pod::Spec.new do |spec|
 
   spec.name         = "AsiaBillPay"
 
-  spec.version      = "0.0.1"
+  spec.version      = "0.0.2"
 
   spec.summary      = "AsiaBillPay iOS SDK."
 
@@ -27,7 +27,7 @@ Pod::Spec.new do |spec|
 
   spec.resource  = "AsiaBillPay_SDK/AsiaBillPaySDKResours.bundle"
 
-  spec.ios.vendored_frameworks = 'AsiaBillPay_SDK/AsiaBillPaySDK.framework'
+  spec.ios.vendored_frameworks = 'AsiaBillPay_SDK/AsiaBillPaySDK.xcframework'
 
   # spec.resources = "Resources/*.png"
 
