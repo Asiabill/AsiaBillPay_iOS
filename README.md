@@ -25,7 +25,7 @@
 	
 > **<h3>4. 信用卡支付：<h3>**
 	
-> **<h4>1. 创建 sessionToken （注意 sessionToken 每次交易都要创建.）<h4>**
+> **<h4>1. 创建 sessionToken （注意 sessionToken 每次交易都要创建.）<h4>** 
 
 **<h5>商户服务端调用 /sessionToken 接口创建本次交易的会话即 sessionToken。<h5>**
 	
