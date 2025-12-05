@@ -119,16 +119,16 @@
 {
     // 开启提示框
     [ZSProgressHUD showHUDShowText:@""];
-    
+    NSInteger env = _paymentsEnvironmentTF.text.length ? [_paymentsEnvironmentTF.text integerValue] : 0;
     __weak typeof(self) weakSelf = self;
     // 先创建 SessionToken
-    [ABHttpRequest createSessionTokenWithMerNo:_merNoTF.text.length?_merNoTF.text:MERNO gatewayNo:_gatewayNoTF.text.length?_gatewayNoTF.text:GATEWAYNO completionBlock:^(NSDictionary * _Nullable resultDic, NSError * _Nullable error) {
+    [ABHttpRequest createSessionTokenWithMerNo:_merNoTF.text.length?_merNoTF.text:MERNO gatewayNo:_gatewayNoTF.text.length?_gatewayNoTF.text:GATEWAYNO paymentsEnvironment:env completionBlock:^(NSDictionary * _Nullable resultDic, NSError * _Nullable error) {
         
         if (!error) {
             NSString *sessionToken = [[resultDic objectForKey:@"data"] objectForKey:@"sessionToken"];
             
             // 再创建 customerId
-            [ABHttpRequest createCustomerIdWithSessionToken:sessionToken completionBlock:^(NSDictionary * _Nullable resultDic, NSError * _Nullable error) {
+            [ABHttpRequest createCustomerIdWithSessionToken:sessionToken paymentsEnvironment:env completionBlock:^(NSDictionary * _Nullable resultDic, NSError * _Nullable error) {
                 
                 if (!error) {
                     NSString *customerId = [[resultDic objectForKey:@"data"] objectForKey:@"customerId"];
@@ -163,9 +163,10 @@
 {
     // 开启提示框
     [ZSProgressHUD showHUDShowText:@""];
+    NSInteger env = _paymentsEnvironmentTF.text.length ? [_paymentsEnvironmentTF.text integerValue] : 0;
     __weak typeof(self) weakSelf = self;
     // 生成 SessionToken
-    [ABHttpRequest createSessionTokenWithMerNo:_merNoTF.text.length?_merNoTF.text:MERNO gatewayNo:_gatewayNoTF.text.length?_gatewayNoTF.text:GATEWAYNO completionBlock:^(NSDictionary * _Nullable resultDic, NSError * _Nullable error) {
+    [ABHttpRequest createSessionTokenWithMerNo:_merNoTF.text.length?_merNoTF.text:MERNO gatewayNo:_gatewayNoTF.text.length?_gatewayNoTF.text:GATEWAYNO paymentsEnvironment:env completionBlock:^(NSDictionary * _Nullable resultDic, NSError * _Nullable error) {
         
         // 销毁提示框
         [ZSProgressHUD hideAllHUDAnimated:NO];

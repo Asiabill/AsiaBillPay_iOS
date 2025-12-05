@@ -12,6 +12,7 @@
 /** 网络IP地址 */
 //#define BaseURL @"http://192.168.3.126:8080"
 //#define BaseURL @"https://sandbox-pay.asiabill.com"
+//#define BaseURL @"https://testpay.asiabill.com"
 #define BaseURL @"https://safepay.asiabill.com"
 
 /** URL */
@@ -28,8 +29,11 @@
 
 /** Signkey */
 //#define SIGNKEY @"2022FlX2"
-//#define SIGNKEY @"12345678"
-#define SIGNKEY @"Pk12345678"
+#define SIGNKEY @"12345678"
+//#define SIGNKEY @"Pk12345678"
+//#define SIGNKEY @"R80d0400"
+//#define SIGNKEY @"12H4567r"
+
 
 /** customerId */
 //#define CUSTOMER_ID @"cus_1432538803306442752"

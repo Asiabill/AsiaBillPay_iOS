@@ -13,10 +13,24 @@
 @implementation ABHttpRequest
 
 #pragma mark - 创建 SessionToken
-+ (void)createSessionTokenWithMerNo:(NSString *)merNo gatewayNo:(NSString *)gatewayNo completionBlock:(RequestCompletionBlock)completionBlock
++ (void)createSessionTokenWithMerNo:(NSString *)merNo gatewayNo:(NSString *)gatewayNo paymentsEnvironment:(NSInteger)paymentsEnvironment completionBlock:(RequestCompletionBlock)completionBlock
 {
+    
+    NSString *urlString = BaseURL;
+    NSString *signKey = SIGNKEY;
+    // 测试环境
+    if (paymentsEnvironment == 0) {
+        signKey = @"12H4567r";;
+        urlString = @"https://sandbox-pay.asiabill.com";
+    }
+    // 仿真环境
+    if (paymentsEnvironment == 1) {
+        signKey = @"12H4567r";
+        urlString = @"https://testpay.asiabill.com";
+    }
+    
     //1.构造URL
-    NSURL *url = [NSURL URLWithString:URL(@"/services/v3/sessionToken")];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/services/v3/sessionToken",urlString]];
     
     //2.创建请求对象
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -28,7 +42,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
     //2.3 设置请求体
-    NSString *signInfo = [self getSessionTokenSignInfoWithMerNo:merNo gatewayNo:gatewayNo];
+    NSString *signInfo = [self getSessionTokenSignInfoWithMerNo:merNo gatewayNo:gatewayNo signKey:signKey];
     NSDictionary *dic = @{@"gatewayNo":gatewayNo?:@"",
                           @"merNo":merNo?:@"",
                           @"signInfo":signInfo?:@""};
@@ -40,9 +54,12 @@
     //3.创建会话对象
     NSURLSession *session = [NSURLSession sharedSession];
     
+    NSLog(@"url: %@",url);
+    NSLog(@"dic: %@",dic);
+    
     //4.task
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-       
+        NSLog(@"response: %@", response);
         // 回到主线程
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -67,10 +84,20 @@
 }
 
 #pragma mark - 创建 CustomerId
-+ (void)createCustomerIdWithSessionToken:(NSString *)sessionToken completionBlock:(RequestCompletionBlock)completionBlock
++ (void)createCustomerIdWithSessionToken:(NSString *)sessionToken paymentsEnvironment:(NSInteger)paymentsEnvironment completionBlock:(RequestCompletionBlock)completionBlock
 {
+    NSString *urlString = BaseURL;
+    // 测试环境
+    if (paymentsEnvironment == 0) {
+        urlString = @"https://sandbox-pay.asiabill.com";
+    }
+    // 仿真环境
+    if (paymentsEnvironment == 1) {
+        urlString = @"https://testpay.asiabill.com";
+    }
+    
     //1.构造URL
-    NSURL *url = [NSURL URLWithString:URL(@"/services/v3/customers")];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/services/v3/customers",urlString]];
     
     //2.创建请求对象
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -97,7 +124,8 @@
     
     //3.创建会话对象
     NSURLSession *session = [NSURLSession sharedSession];
-    
+    NSLog(@"url: %@",url);
+    NSLog(@"dic: %@",dic);
     //4.task
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
        
@@ -125,7 +153,7 @@
 
 
 #pragma mark - 签名
-+ (NSString *)getSessionTokenSignInfoWithMerNo:(NSString *)merNo gatewayNo:(NSString *)gatewayNo
++ (NSString *)getSessionTokenSignInfoWithMerNo:(NSString *)merNo gatewayNo:(NSString *)gatewayNo signKey:(NSString *)signKey
 {
     NSMutableDictionary *tmpDict = [NSMutableDictionary new];
     
@@ -145,7 +173,7 @@
     }
     
     //拼接signkey
-    signInfo = [signInfo stringByAppendingString:SIGNKEY];
+    signInfo = [signInfo stringByAppendingString:signKey];
     
     // sha256String (sha256加密) (将字符串转化为小写再加密)
     return [self sha256String:signInfo.lowercaseString];
