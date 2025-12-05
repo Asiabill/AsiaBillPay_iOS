@@ -346,7 +346,7 @@
     order.goodsDetail = @[@{@"goodscount":@"5",@"goodsprice":@"10",@"goodstitle":@"product one"},@{@"goodscount":@"5",@"goodsprice":@"10.6",@"goodstitle":@"product two"},@{@"goodscount":@"5",@"goodsprice":@"20.2",@"goodstitle":@"product three"}];
     
     // 支付环境 0:测试环境; 1:仿真环境; 2:线上生产环境 (支付环境不传默认是线上环境 2)
-    order.paymentsEnvironment = _paymentMethodTF.text.length ? [_paymentMethodTF.text integerValue] : 0;
+    order.paymentsEnvironment = _paymentsEnvironmentTF.text.length ? [_paymentsEnvironmentTF.text integerValue] : 0;
     
     return order;
 }
