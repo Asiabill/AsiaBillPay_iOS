@@ -18,7 +18,9 @@ typedef NS_ENUM(NSInteger, ResultCode) {
     /** 支付失败 */
     ABPayFail = 7700,
     /** 处理中... */
-    ABPayHandling = 6600
+    ABPayHandling = 6600,
+    /** 用户手动点击返回... */
+    ABPayCancel = 1000
 };
 
 
