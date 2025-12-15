@@ -200,7 +200,7 @@
         
         ABPayOrderInfo *orderInfo = [weakSelf setPayOrderInfo_2_1];
         orderInfo.sessionToken = sessionToken;
-        orderInfo.customerId = @"cus_2000391180471906304";//weakSelf.customer_ID;
+        orderInfo.customerId = weakSelf.customer_ID;
         
         // 存订单信息
         NSMutableDictionary *orderInfoDic = [NSMutableDictionary new];
@@ -216,9 +216,12 @@
         [[ABPayManager sharedManager] payOrder:orderInfo fromScheme:@"" callback:^(NSDictionary *resultDic) {
                 
             ResultCode code = [[resultDic objectForKey:@"code"] integerValue];
-            [ABPaymentResultView show:code];
-            
             NSLog(@"---2.1支付返回数据：%@",resultDic);
+            if (code == 1000) {
+                NSLog(@"用户自行点击返回");
+            } else {
+                [ABPaymentResultView show:code];
+            }
             
         }];
         
@@ -432,6 +435,7 @@
 // 2.1
 - (ABPayOrderInfo *)setPayOrderInfo_2_1
 {
+    // cus_2000454675154481152
     //生成订单信息
     ABPayOrderInfo *order = [ABPayOrderInfo new];
     order.viewManagerType = 0;
