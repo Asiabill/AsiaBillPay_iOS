@@ -435,7 +435,7 @@
 // 2.1
 - (ABPayOrderInfo *)setPayOrderInfo_2_1
 {
-    // cus_2000454675154481152
+//    {"callbackUrl":"https:\/\/dpa4qbg59e.execute-api.us-west-2.amazonaws.com\/dev\/asia-bill\/payment","merNo":"12246","zip":"90012","country":"United States","signkey":"12H4567r","customerId":"cus_2000408431585538048","city":"Los Angeles County","orderAmount":"1.00","cardType":["Visa","Master card","American Express","JCB","Discover","Maestro","Dinners club"],"state":"California","orderNo":"o17657775280116f6c79f4af478638c39b2","email":"121091892@outlook.com","gatewayNo":"12246003","phone":"17071308318","firstName":"","paymentMethod":"Credit Card","sessionToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjI0NiIsImNyZWF0ZVRpbWUiOiIyMDI1LTEyLTE1IDEzOjQ1OjI5LjAxMyIsImlzcyI6IkFzaWFiaWxsIiwiZXhwIjoxNzY1Nzc5MzI5LCJpYXQiOjE3NjU3Nzc1MjksImp0aSI6Im1lck5vPTEyMjQ2LGd3Tm89MTIyNDYwMDMsbWVyT3JkZXJObz0xMTg0ZTIzYS1iMWQ4LTQzMTItYjg0ZC00MjU1ZTUwZGEzY2QsY3JlYXRlVGltZT0yMDI1LTEyLTE1IDEzOjQ1OjI5LjAxMyJ9.E7gi_1Kfmo_4b4WKfb9ZHmiASh9QfKqMmqsOUNW14nc","orderCurrency":"USD","viewManagerType":0,"lastName":"","address":"132A N Spring St, Los Angeles, CA 90012, USA","paymentsEnvironment":1}
     //生成订单信息
     ABPayOrderInfo *order = [ABPayOrderInfo new];
     order.viewManagerType = 0;
