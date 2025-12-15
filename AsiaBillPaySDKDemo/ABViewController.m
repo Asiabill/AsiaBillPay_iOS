@@ -8,16 +8,17 @@
 
 #import "ABViewController.h"
 #import <AsiaBillPaySDK/AsiaBillPaySDK.h>
-#import "ABHeader.h"
 #import "ABHttpRequest.h"
+#import "ABHeader.h"
 #import "ABPaymentResultView.h"
+
 
 #define AB_SUBVIEW_XGAP   (20.0f)
 #define AB_SUBVIEW_YGAP   (30.0f)
 #define AB_SUBVIEW_WIDTH  (([UIScreen mainScreen].bounds.size.width) - 2 * (AB_SUBVIEW_XGAP))
 
 #define AB_BUTTON_HEIGHT  (60.0f)
-//#define AB_INFO_HEIGHT    (200.0f)
+
 
 @interface ABViewController ()
 /** 支付环境 */
@@ -34,7 +35,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *paymentMethodTF;
 /** signkey */
 @property (weak, nonatomic) IBOutlet UITextField *signKeyTF;
-
 /** CUSTOMER_ID */
 @property (nonatomic,copy) NSString *customer_ID;
 
@@ -48,7 +48,6 @@
     [self layoutVCSubView];
     
     [self setTextFieldColor];
-    
 }
 
 - (void)setTextFieldColor
@@ -94,12 +93,20 @@
     
 
     // NOTE: 支付按钮，模拟支付流程
-    CGFloat originalPosY = [UIApplication sharedApplication].statusBarFrame.size.height + 80.0f;
-    [self generateBtnWithTitle:@"信用卡支付_2.1" selector:@selector(doABPay_2_1) posy:originalPosY];
+    CGFloat originalPosY = AB_SUBVIEW_YGAP + 100;
+    [self generateBtnWithTitle:@"国际信用卡支付_2.1" selector:@selector(doABPay_2_1) posy:originalPosY];
     
-    // NOTE: 测试按钮
-    originalPosY += (AB_BUTTON_HEIGHT + AB_SUBVIEW_YGAP);
-//    [self generateBtnWithTitle:@"支付_1.0" selector:@selector(doABPay_1) posy:originalPosY];
+    [self generateBtnWithTitle:@"切换仿真环境" selector:@selector(changeToDisTest) posy:originalPosY + AB_BUTTON_HEIGHT + 10];
+    
+    [self generateBtnWithTitle:@"切换生产环境" selector:@selector(changeToDis) posy:originalPosY + AB_BUTTON_HEIGHT + 10 + AB_BUTTON_HEIGHT + 10];
+    
+//    // NOTE: 支付按钮，模拟支付流程
+//    originalPosY += (AB_BUTTON_HEIGHT + AB_SUBVIEW_YGAP);
+//    [self generateBtnWithTitle:@"国际信用卡支付_2.0" selector:@selector(doABPay_2) posy:originalPosY];
+//
+//    // NOTE: 支付按钮，模拟支付流程
+//    originalPosY += (AB_BUTTON_HEIGHT + AB_SUBVIEW_YGAP);
+//    [self generateBtnWithTitle:@"海外本地支付_1.0" selector:@selector(doABPay_1) posy:originalPosY];
 }
 
 - (void)generateBtnWithTitle:(NSString*)title selector:(SEL)selector posy:(CGFloat)posy
@@ -113,15 +120,30 @@
     [self.view addSubview:tmpBtn];
 }
 
+#pragma mark - 创建customerId
+- (void)changeToDis {
+    _paymentsEnvironmentTF.text = @"2";
+    _merNoTF.text = @"10000";
+    _signKeyTF.text = @"12345678";
+    _gatewayNoTF.text = @"10000001";
+}
+
+- (void)changeToDisTest {
+    _paymentsEnvironmentTF.text = @"1";
+    _merNoTF.text = @"12246";
+    _signKeyTF.text = @"12H4567r";
+    _gatewayNoTF.text = @"12246003";
+}
 
 #pragma mark - 创建customerId
 - (void)createCustomerIDAction
 {
     // 开启提示框
     [ZSProgressHUD showHUDShowText:@""];
-    NSInteger env = _paymentsEnvironmentTF.text.length ? [_paymentsEnvironmentTF.text integerValue] : 0;
+    
     __weak typeof(self) weakSelf = self;
     // 先创建 SessionToken
+    NSInteger env = _paymentsEnvironmentTF.text.length ? [_paymentsEnvironmentTF.text integerValue] : 0;
     [ABHttpRequest createSessionTokenWithMerNo:_merNoTF.text.length?_merNoTF.text:MERNO gatewayNo:_gatewayNoTF.text.length?_gatewayNoTF.text:GATEWAYNO paymentsEnvironment:env completionBlock:^(NSDictionary * _Nullable resultDic, NSError * _Nullable error) {
         
         if (!error) {
@@ -163,9 +185,9 @@
 {
     // 开启提示框
     [ZSProgressHUD showHUDShowText:@""];
-    NSInteger env = _paymentsEnvironmentTF.text.length ? [_paymentsEnvironmentTF.text integerValue] : 0;
     __weak typeof(self) weakSelf = self;
     // 生成 SessionToken
+    NSInteger env = _paymentsEnvironmentTF.text.length ? [_paymentsEnvironmentTF.text integerValue] : 0;
     [ABHttpRequest createSessionTokenWithMerNo:_merNoTF.text.length?_merNoTF.text:MERNO gatewayNo:_gatewayNoTF.text.length?_gatewayNoTF.text:GATEWAYNO paymentsEnvironment:env completionBlock:^(NSDictionary * _Nullable resultDic, NSError * _Nullable error) {
         
         // 销毁提示框
@@ -178,7 +200,7 @@
         
         ABPayOrderInfo *orderInfo = [weakSelf setPayOrderInfo_2_1];
         orderInfo.sessionToken = sessionToken;
-        orderInfo.customerId = weakSelf.customer_ID;
+        orderInfo.customerId = @"cus_2000391180471906304";//weakSelf.customer_ID;
         
         // 存订单信息
         NSMutableDictionary *orderInfoDic = [NSMutableDictionary new];
@@ -204,21 +226,48 @@
 }
 
 
+#pragma mark - 点击订单模拟支付行为
+- (void)doABPay_2
+{
+    ABPayOrderInfo *orderInfo = [self setPayOrderInfo];
+    
+    [[ABPayManager sharedManager] payOrder:orderInfo fromScheme:@"" callback:^(NSDictionary *resultDic) {
+            
+        NSLog(@"---2.0支付返回数据：%@",resultDic);
+        
+    }];
+    
+}
+
 - (void)doABPay_1
 {
     
     ABPayOrderInfo *orderInfo = [self setLocalPayOrderInfo];
-
+    
+    // 存订单信息
+    NSMutableDictionary *orderInfoDic = [NSMutableDictionary new];
+    [orderInfoDic addEntriesFromDictionary:@{@"orderAmount":orderInfo.orderAmount,
+                                             @"orderCurrency":orderInfo.orderCurrency,
+                                             @"orderNo":orderInfo.orderNo,
+                                             @"paymentMethod":orderInfo.paymentMethod,
+                                             @"AlipayLBText":@"Alipay+™ Partner"
+    }];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:orderInfoDic forKey:@"orderInfoDic"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     [[ABPayManager sharedManager] payOrder:orderInfo fromScheme:@"" callback:^(NSDictionary *resultDic) {
             
-        NSLog(@"---1.0支付返回数据：%@",resultDic);
+        ResultCode code = [[resultDic objectForKey:@"code"] integerValue];
+        [ABPaymentResultView show:code];
         
-        }];
+        NSLog(@"---1.0支付返回数据：%@",resultDic);
+    }];
     
 }
 
 #pragma mark - 设置订单信息
-//1.0
+// 1.0
 - (ABPayOrderInfo *)setLocalPayOrderInfo
 {
     //生成订单信息
@@ -226,27 +275,32 @@
     
     // 商户号
     //order.merNo = @"12167";
-    order.merNo = _merNoTF.text.length ? _merNoTF.text : @"12172";
-    
+//    order.merNo = _merNoTF.text.length ? _merNoTF.text : @"12172";
+//    order.merNo = KR_MERNO;
+    order.merNo = Alipay_MERNO;
     
     //网关接入号
     //order.gatewayNo = @"12167001";
-    order.gatewayNo = _gatewayNoTF.text.length ? _gatewayNoTF.text : @"12172002";
+//    order.gatewayNo = _gatewayNoTF.text.length ? _gatewayNoTF.text : @"12172002";
+//    order.gatewayNo = KR_GATEWAYNO;
+    order.gatewayNo = Alipay_GATEWAYNO;
     
     //商户订单号
     //order.orderNo = @"1624957682021";
     order.orderNo = [self getTimestamp];
 
     // 交易币种
-    order.orderCurrency = _orderCurrencyTF.text.length ? _orderCurrencyTF.text : @"USD";
+//    order.orderCurrency = _orderCurrencyTF.text.length ? _orderCurrencyTF.text : @"USD";
+    order.orderCurrency = @"KRW";
 
     // 交易金额,只限小数点后两位
-    //order.orderAmount = @"0.1";
+//    order.orderAmount = @"0.1";
     order.orderAmount = _orderAmountTF.text.length ? _orderAmountTF.text : @"300";
 
     //支付方式
     //order.paymentMethod = @"ID_BankTransfer";
-    order.paymentMethod = _paymentMethodTF.text.length ? _paymentMethodTF.text : @"ideal";
+//    order.paymentMethod = _paymentMethodTF.text.length ? _paymentMethodTF.text : @"ideal";
+    order.paymentMethod = @"KAKAOPAY";
 
     // 名
     order.firstName = @"CL";
@@ -259,6 +313,80 @@
 
     // 电话
     order.phone = @"1 650-555-5555";
+
+    // 账单国家
+//    order.country = @"US";
+    order.country = @"Kr";
+    
+    //州
+    order.state = @"CA";
+
+    // 客人的账单城市
+    order.city = @"Mountain View";
+
+    // 客人的账单地址
+    order.address = @"1600 Amphitheatre Parkway";
+
+    // 客人的邮编
+    order.zip = @"94043";
+    
+//    order.signkey = @"12345678";
+    order.signkey = KR_SIGNKEY;
+    
+    // 支付环境 0:测试环境; 1:仿真环境; 2:线上生产环境 (支付环境不传默认是线上环境 2)
+    order.paymentsEnvironment = 1;
+    
+    return order;
+
+}
+
+
+//2.0
+- (ABPayOrderInfo *)setPayOrderInfo
+{
+    //生成订单信息
+    ABPayOrderInfo *order = [ABPayOrderInfo new];
+    
+    // 商户号
+    order.merNo = @"12345";
+//    order.merNo = _merNoTF.text.length ? _merNoTF.text : @"12167";
+    
+    
+    //网关接入号
+    order.gatewayNo = @"12345004";
+//    order.gatewayNo = _gatewayNoTF.text.length ? _gatewayNoTF.text : @"12167005";
+    
+    //商户订单号
+    //order.orderNo = @"1624957682021";
+    order.orderNo = [self getTimestamp];
+
+    // 交易币种
+    //order.orderCurrency = _orderCurrencyTF.text.length ? _orderCurrencyTF.text : @"USD";
+    order.orderCurrency = @"USD";
+
+    // 交易金额,只限小数点后两位
+    order.orderAmount = @"1.01";
+    //order.orderAmount = _orderAmountTF.text.length ? _orderAmountTF.text : @"1.01";
+
+    //支付方式
+    order.paymentMethod = _paymentMethodTF.text.length ? _paymentMethodTF.text : @"Credit Card";
+    
+    // 信用卡卡种
+//    order.CardType = @[@"Visa",@"Master card",@"American Express",@"JCB",@"Discover",@"Maestro",@"Dinners club"];
+    order.cardType = @[@"JCB",@"Discover",@"Maestro",@"Dinners club"];
+
+    // 名
+//    order.firstName = @"CL";
+    order.firstName = @"FL";
+
+    // 姓
+    order.lastName = @"BRW1";
+
+    // 邮件
+    order.email = @"532539937@qq.com";
+
+    // 电话
+    order.phone = @"+ 650-555-5555";
 
     // 账单国家
     order.country = @"US";
@@ -277,20 +405,36 @@
     
     order.signkey = @"12345678";
 
+    order.callbackUrl = @"https://testpay.asiabill.com/services/v3/CallResult";
+    
+    order.goodsDetail = @[@{@"goodscount":@"5",@"goodsprice":@"10",@"goodstitle":@"product one"},@{@"goodscount":@"5",@"goodsprice":@"10.6",@"goodstitle":@"product two"},@{@"goodscount":@"5",@"goodsprice":@"20.2",@"goodstitle":@"product three"}];
+    
     // 支付环境 0:测试环境; 1:仿真环境; 2:线上生产环境 (支付环境不传默认是线上环境 2)
     order.paymentsEnvironment = 0;
     
+ /** ********* 不需要传值得参数 ********************** */
+    
+//    /** 不能写死，不是商户传值 */
+//    order.ip = @"113.110.142.228";
+    
+//    //卡号
+//    order.cardNo = @"4000020951595032";
+//    //年
+//    order.cardExpireYear = @"2025";
+//    //月
+//    order.cardExpireMonth = @"12";
+//    //CVV
+//    order.cardSecurityCode = @"217";
+    
     return order;
-
 }
-
 
 // 2.1
 - (ABPayOrderInfo *)setPayOrderInfo_2_1
 {
     //生成订单信息
     ABPayOrderInfo *order = [ABPayOrderInfo new];
-    
+    order.viewManagerType = 0;
     // 商户号
     order.merNo = _merNoTF.text.length?_merNoTF.text:MERNO;
     
@@ -356,7 +500,7 @@
 - (NSString *)getTimestamp
 {
     NSDate *datenow = [NSDate date];
-    NSTimeInterval interval = [datenow timeIntervalSince1970] *1000;
+    NSTimeInterval interval = [datenow timeIntervalSince1970] * 1000;
     
     return [NSString stringWithFormat:@"%.f",interval];
 }
@@ -365,6 +509,11 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];
+//    [self createCustomerId];
+    
+//    NSString *str = @"";
+//
+//    NSAssert([str hasPrefix:@"hh"], @"断言提示");
     
 }
 
