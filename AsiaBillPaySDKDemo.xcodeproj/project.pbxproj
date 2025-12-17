@@ -16,7 +16,7 @@
 		576FC38626A191DF00DB7B0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 576FC38426A191DF00DB7B0F /* LaunchScreen.storyboard */; };
 		576FC38926A191DF00DB7B0F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 576FC38826A191DF00DB7B0F /* main.m */; };
 		578FF3F82722E220005B8E4E /* AsiaBillPaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 578FF3F62722E201005B8E4E /* AsiaBillPaySDK.framework */; };
-		F88E68822EF00AA300071085 /* AsiaBillPaySDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88E68812EF00AA300071085 /* AsiaBillPaySDK.xcframework */; };
+		F88E68A22EF295A500071085 /* AsiaBillPaySDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88E68A12EF295A500071085 /* AsiaBillPaySDK.xcframework */; };
 		F88E79682EE2882A00AD0E5A /* ABViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F88E79632EE2882A00AD0E5A /* ABViewController.m */; };
 		F88E79692EE2882A00AD0E5A /* ABHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F88E79672EE2882A00AD0E5A /* ABHttpRequest.m */; };
 		F88E796A2EE2882A00AD0E5A /* ABViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F88E79642EE2882A00AD0E5A /* ABViewController.xib */; };
@@ -58,7 +58,7 @@
 		579AADC426B3F8D80056642D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		579AADC526B3F8E50056642D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		579AADC626B3F8E50056642D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		F88E68812EF00AA300071085 /* AsiaBillPaySDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = AsiaBillPaySDK.xcframework; sourceTree = "<group>"; };
+		F88E68A12EF295A500071085 /* AsiaBillPaySDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = AsiaBillPaySDK.xcframework; sourceTree = "<group>"; };
 		F88E79622EE2882A00AD0E5A /* ABViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABViewController.h; sourceTree = "<group>"; };
 		F88E79632EE2882A00AD0E5A /* ABViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABViewController.m; sourceTree = "<group>"; };
 		F88E79642EE2882A00AD0E5A /* ABViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ABViewController.xib; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F88E68822EF00AA300071085 /* AsiaBillPaySDK.xcframework in Frameworks */,
+				F88E68A22EF295A500071085 /* AsiaBillPaySDK.xcframework in Frameworks */,
 				578FF3F82722E220005B8E4E /* AsiaBillPaySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,7 +144,7 @@
 		5793BDED2745112E0012C6A4 /* AsiaBillPay_SDK */ = {
 			isa = PBXGroup;
 			children = (
-				F88E68812EF00AA300071085 /* AsiaBillPaySDK.xcframework */,
+				F88E68A12EF295A500071085 /* AsiaBillPaySDK.xcframework */,
 				57324874276B294700AB3C90 /* AsiaBillPaySDKResours.bundle */,
 			);
 			path = AsiaBillPay_SDK;

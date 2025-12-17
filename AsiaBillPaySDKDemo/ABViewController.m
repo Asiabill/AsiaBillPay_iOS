@@ -132,7 +132,7 @@
     _paymentsEnvironmentTF.text = @"1";
     _merNoTF.text = @"12246";
     _signKeyTF.text = @"12H4567r";
-    _gatewayNoTF.text = @"12246003";
+    _gatewayNoTF.text = @"12246002";
 }
 
 #pragma mark - 创建customerId
@@ -457,7 +457,7 @@
     order.paymentMethod = @"Credit Card";
     
     // 信用卡卡种
-    order.cardType = @[@"Visa",@"Master card",@"American Express",@"JCB",@"Discover",@"Maestro",@"Dinners club"];
+    order.cardType = @[@"Visa",@"Master",@"American Express",@"JCB",@"Discover",@"Maestro",@"Dinners club"];
 
     // 名
     order.firstName = @"FL";
