@@ -107,9 +107,14 @@ NS_ASSUME_NONNULL_BEGIN
 /** CVV */
 @property (nonatomic,copy) NSString *cardSecurityCode;
 
-
-
-
+/** Apple Pay Marchant ID
+ 有他才展示ApplePay按钮
+ */
+@property (nonatomic,copy) NSString *appleMerchantId;
+/** Apple Pay 商品描述*/
+@property (nonatomic,copy) NSString *productDes;
+/** Apple Pay 收款方*/
+@property (nonatomic,copy) NSString *cardToken;
 
 /// 字典转模型
 /// @param dict 字典

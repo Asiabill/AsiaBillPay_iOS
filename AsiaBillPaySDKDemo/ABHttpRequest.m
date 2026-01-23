@@ -20,7 +20,7 @@
     NSString *signKey = SIGNKEY;
     // 测试环境
     if (paymentsEnvironment == 0) {
-        signKey = @"12H4567r";;
+        signKey = @"12345678";;
         urlString = @"https://sandbox-pay.asiabill.com";
     }
     // 仿真环境

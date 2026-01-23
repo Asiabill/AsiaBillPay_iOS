@@ -11,7 +11,7 @@
 #import "ABHttpRequest.h"
 #import "ABHeader.h"
 #import "ABPaymentResultView.h"
-
+#import <PassKit/PassKit.h>
 
 #define AB_SUBVIEW_XGAP   (20.0f)
 #define AB_SUBVIEW_YGAP   (30.0f)
@@ -48,6 +48,16 @@
     [self layoutVCSubView];
     
     [self setTextFieldColor];
+    
+    // 检查是否支持 Apple Pay，并指定支持的网络（基于你的代码）
+    NSArray<PKPaymentNetwork> *supportedNetworks = @[PKPaymentNetworkVisa, PKPaymentNetworkMasterCard, PKPaymentNetworkAmex];
+    if ([PKPaymentAuthorizationViewController canMakePaymentsUsingNetworks:supportedNetworks]) {
+        // 显示 Apple Pay 按钮
+        NSLog(@"显示 Apple Pay 按钮");
+    } else {
+        // 隐藏按钮或显示提示
+        NSLog(@"隐藏按钮或显示提示");
+    }
 }
 
 - (void)setTextFieldColor
@@ -93,12 +103,14 @@
     
 
     // NOTE: 支付按钮，模拟支付流程
-    CGFloat originalPosY = AB_SUBVIEW_YGAP + 100;
+    CGFloat originalPosY = AB_SUBVIEW_YGAP + 50;
     [self generateBtnWithTitle:@"国际信用卡支付_2.1" selector:@selector(doABPay_2_1) posy:originalPosY];
     
     [self generateBtnWithTitle:@"切换仿真环境" selector:@selector(changeToDisTest) posy:originalPosY + AB_BUTTON_HEIGHT + 10];
     
     [self generateBtnWithTitle:@"切换生产环境" selector:@selector(changeToDis) posy:originalPosY + AB_BUTTON_HEIGHT + 10 + AB_BUTTON_HEIGHT + 10];
+    
+    [self generateBtnWithTitle:@"切换测试环境" selector:@selector(changeTest) posy:originalPosY + AB_BUTTON_HEIGHT + 10 + AB_BUTTON_HEIGHT + 10 + AB_BUTTON_HEIGHT + 10];
     
 //    // NOTE: 支付按钮，模拟支付流程
 //    originalPosY += (AB_BUTTON_HEIGHT + AB_SUBVIEW_YGAP);
@@ -133,6 +145,13 @@
     _merNoTF.text = @"12246";
     _signKeyTF.text = @"12H4567r";
     _gatewayNoTF.text = @"12246002";
+}
+
+- (void)changeTest {
+    _paymentsEnvironmentTF.text = @"0";
+    _merNoTF.text = @"12184";
+    _signKeyTF.text = @"12345678";
+    _gatewayNoTF.text = @"12184001";
 }
 
 #pragma mark - 创建customerId
@@ -494,7 +513,10 @@
     
     // 支付环境 0:测试环境; 1:仿真环境; 2:线上生产环境 (支付环境不传默认是线上环境 2)
     order.paymentsEnvironment = _paymentsEnvironmentTF.text.length ? [_paymentsEnvironmentTF.text integerValue] : 0;
-    
+    // 如果需要使用ApplePay，必须传入appleMerchantId -- 在dev后台生成
+    order.appleMerchantId = @"merchant.com.applepay.moneycollect";
+    // 商品描述
+    order.productDes = @"Asiabill";
     return order;
 }
 
