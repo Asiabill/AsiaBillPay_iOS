@@ -13,19 +13,16 @@
 @implementation ABHttpRequest
 
 #pragma mark - 创建 SessionToken
-+ (void)createSessionTokenWithMerNo:(NSString *)merNo gatewayNo:(NSString *)gatewayNo paymentsEnvironment:(NSInteger)paymentsEnvironment completionBlock:(RequestCompletionBlock)completionBlock
++ (void)createSessionTokenWithMerNo:(NSString *)merNo gatewayNo:(NSString *)gatewayNo paymentsEnvironment:(NSInteger)paymentsEnvironment signKey:(NSString *)signKey completionBlock:(RequestCompletionBlock)completionBlock
 {
     
     NSString *urlString = BaseURL;
-    NSString *signKey = SIGNKEY;
     // 测试环境
     if (paymentsEnvironment == 0) {
-        signKey = @"12345678";;
         urlString = @"https://sandbox-pay.asiabill.com";
     }
     // 仿真环境
     if (paymentsEnvironment == 1) {
-        signKey = @"12H4567r";
         urlString = @"https://testpay.asiabill.com";
     }
     

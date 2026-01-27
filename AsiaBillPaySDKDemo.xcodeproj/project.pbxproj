@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		57324875276B294700AB3C90 /* AsiaBillPaySDKResours.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 57324874276B294700AB3C90 /* AsiaBillPaySDKResours.bundle */; };
-		573248B62770955400AB3C90 /* ABPaymentResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 573248B32770955300AB3C90 /* ABPaymentResultView.m */; };
-		573248B72770955400AB3C90 /* ABPaymentResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 573248B42770955400AB3C90 /* ABPaymentResultView.xib */; };
 		576FC37826A191DA00DB7B0F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 576FC37726A191DA00DB7B0F /* AppDelegate.m */; };
 		576FC38126A191DA00DB7B0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 576FC37F26A191DA00DB7B0F /* Main.storyboard */; };
 		576FC38326A191DF00DB7B0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 576FC38226A191DF00DB7B0F /* Assets.xcassets */; };
@@ -17,16 +14,15 @@
 		576FC38926A191DF00DB7B0F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 576FC38826A191DF00DB7B0F /* main.m */; };
 		578FF3F82722E220005B8E4E /* AsiaBillPaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 578FF3F62722E201005B8E4E /* AsiaBillPaySDK.framework */; };
 		F832FA242F2365730086CE7C /* AsiaBillPaySDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F832FA232F2365730086CE7C /* AsiaBillPaySDK.xcframework */; };
-		F88E79682EE2882A00AD0E5A /* ABViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F88E79632EE2882A00AD0E5A /* ABViewController.m */; };
-		F88E79692EE2882A00AD0E5A /* ABHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F88E79672EE2882A00AD0E5A /* ABHttpRequest.m */; };
-		F88E796A2EE2882A00AD0E5A /* ABViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F88E79642EE2882A00AD0E5A /* ABViewController.xib */; };
+		F832FA262F285A4B0086CE7C /* AsiaBillPaySDKResours.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F832FA252F285A4B0086CE7C /* AsiaBillPaySDKResours.bundle */; };
+		F832FA342F2899EB0086CE7C /* ABPaymentResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F832FA332F2899EB0086CE7C /* ABPaymentResultView.xib */; };
+		F832FA352F2899EB0086CE7C /* ABPaymentResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = F832FA322F2899EB0086CE7C /* ABPaymentResultView.m */; };
+		F832FA3B2F28C6660086CE7C /* ABViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F832FA382F28C6660086CE7C /* ABViewController.xib */; };
+		F832FA3C2F28C6660086CE7C /* ABHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F832FA3A2F28C6660086CE7C /* ABHttpRequest.m */; };
+		F832FA3D2F28C6660086CE7C /* ABViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F832FA372F28C6660086CE7C /* ABViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		57324874276B294700AB3C90 /* AsiaBillPaySDKResours.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AsiaBillPaySDKResours.bundle; sourceTree = "<group>"; };
-		573248B22770955300AB3C90 /* ABPaymentResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABPaymentResultView.h; sourceTree = "<group>"; };
-		573248B32770955300AB3C90 /* ABPaymentResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABPaymentResultView.m; sourceTree = "<group>"; };
-		573248B42770955400AB3C90 /* ABPaymentResultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ABPaymentResultView.xib; sourceTree = "<group>"; };
 		576FC37326A191DA00DB7B0F /* AsiaBillPaySDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsiaBillPaySDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		576FC37626A191DA00DB7B0F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		576FC37726A191DA00DB7B0F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -59,12 +55,16 @@
 		579AADC526B3F8E50056642D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		579AADC626B3F8E50056642D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F832FA232F2365730086CE7C /* AsiaBillPaySDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = AsiaBillPaySDK.xcframework; sourceTree = "<group>"; };
-		F88E79622EE2882A00AD0E5A /* ABViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABViewController.h; sourceTree = "<group>"; };
-		F88E79632EE2882A00AD0E5A /* ABViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABViewController.m; sourceTree = "<group>"; };
-		F88E79642EE2882A00AD0E5A /* ABViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ABViewController.xib; sourceTree = "<group>"; };
+		F832FA252F285A4B0086CE7C /* AsiaBillPaySDKResours.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AsiaBillPaySDKResours.bundle; sourceTree = "<group>"; };
+		F832FA312F2899EB0086CE7C /* ABPaymentResultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABPaymentResultView.h; sourceTree = "<group>"; };
+		F832FA322F2899EB0086CE7C /* ABPaymentResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABPaymentResultView.m; sourceTree = "<group>"; };
+		F832FA332F2899EB0086CE7C /* ABPaymentResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ABPaymentResultView.xib; sourceTree = "<group>"; };
+		F832FA362F28C6660086CE7C /* ABViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABViewController.h; sourceTree = "<group>"; };
+		F832FA372F28C6660086CE7C /* ABViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABViewController.m; sourceTree = "<group>"; };
+		F832FA382F28C6660086CE7C /* ABViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ABViewController.xib; sourceTree = "<group>"; };
+		F832FA392F28C6660086CE7C /* ABHttpRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABHttpRequest.h; sourceTree = "<group>"; };
+		F832FA3A2F28C6660086CE7C /* ABHttpRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABHttpRequest.m; sourceTree = "<group>"; };
 		F88E79652EE2882A00AD0E5A /* ABHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABHeader.h; sourceTree = "<group>"; };
-		F88E79662EE2882A00AD0E5A /* ABHttpRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABHttpRequest.h; sourceTree = "<group>"; };
-		F88E79672EE2882A00AD0E5A /* ABHttpRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABHttpRequest.m; sourceTree = "<group>"; };
 		F8F75BBC2F20CD29005A73BB /* AsiaBillPaySDKDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AsiaBillPaySDKDemo.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,15 +105,15 @@
 				5793BDED2745112E0012C6A4 /* AsiaBillPay_SDK */,
 				576FC37626A191DA00DB7B0F /* AppDelegate.h */,
 				576FC37726A191DA00DB7B0F /* AppDelegate.m */,
-				F88E79622EE2882A00AD0E5A /* ABViewController.h */,
-				F88E79632EE2882A00AD0E5A /* ABViewController.m */,
-				F88E79642EE2882A00AD0E5A /* ABViewController.xib */,
 				F88E79652EE2882A00AD0E5A /* ABHeader.h */,
-				F88E79662EE2882A00AD0E5A /* ABHttpRequest.h */,
-				F88E79672EE2882A00AD0E5A /* ABHttpRequest.m */,
-				573248B22770955300AB3C90 /* ABPaymentResultView.h */,
-				573248B32770955300AB3C90 /* ABPaymentResultView.m */,
-				573248B42770955400AB3C90 /* ABPaymentResultView.xib */,
+				F832FA362F28C6660086CE7C /* ABViewController.h */,
+				F832FA372F28C6660086CE7C /* ABViewController.m */,
+				F832FA382F28C6660086CE7C /* ABViewController.xib */,
+				F832FA392F28C6660086CE7C /* ABHttpRequest.h */,
+				F832FA3A2F28C6660086CE7C /* ABHttpRequest.m */,
+				F832FA312F2899EB0086CE7C /* ABPaymentResultView.h */,
+				F832FA322F2899EB0086CE7C /* ABPaymentResultView.m */,
+				F832FA332F2899EB0086CE7C /* ABPaymentResultView.xib */,
 				576FC37F26A191DA00DB7B0F /* Main.storyboard */,
 				576FC38226A191DF00DB7B0F /* Assets.xcassets */,
 				576FC38426A191DF00DB7B0F /* LaunchScreen.storyboard */,
@@ -147,7 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				F832FA232F2365730086CE7C /* AsiaBillPaySDK.xcframework */,
-				57324874276B294700AB3C90 /* AsiaBillPaySDKResours.bundle */,
+				F832FA252F285A4B0086CE7C /* AsiaBillPaySDKResours.bundle */,
 			);
 			path = AsiaBillPay_SDK;
 			sourceTree = SOURCE_ROOT;
@@ -229,10 +229,10 @@
 			files = (
 				576FC38626A191DF00DB7B0F /* LaunchScreen.storyboard in Resources */,
 				576FC38326A191DF00DB7B0F /* Assets.xcassets in Resources */,
-				57324875276B294700AB3C90 /* AsiaBillPaySDKResours.bundle in Resources */,
+				F832FA262F285A4B0086CE7C /* AsiaBillPaySDKResours.bundle in Resources */,
 				576FC38126A191DA00DB7B0F /* Main.storyboard in Resources */,
-				573248B72770955400AB3C90 /* ABPaymentResultView.xib in Resources */,
-				F88E796A2EE2882A00AD0E5A /* ABViewController.xib in Resources */,
+				F832FA342F2899EB0086CE7C /* ABPaymentResultView.xib in Resources */,
+				F832FA3B2F28C6660086CE7C /* ABViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,9 +243,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				573248B62770955400AB3C90 /* ABPaymentResultView.m in Sources */,
-				F88E79682EE2882A00AD0E5A /* ABViewController.m in Sources */,
-				F88E79692EE2882A00AD0E5A /* ABHttpRequest.m in Sources */,
+				F832FA352F2899EB0086CE7C /* ABPaymentResultView.m in Sources */,
+				F832FA3C2F28C6660086CE7C /* ABHttpRequest.m in Sources */,
+				F832FA3D2F28C6660086CE7C /* ABViewController.m in Sources */,
 				576FC37826A191DA00DB7B0F /* AppDelegate.m in Sources */,
 				576FC38926A191DF00DB7B0F /* main.m in Sources */,
 			);

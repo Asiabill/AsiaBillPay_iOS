@@ -11,7 +11,7 @@
 #import "ABHttpRequest.h"
 #import "ABHeader.h"
 #import "ABPaymentResultView.h"
-#import <PassKit/PassKit.h>
+
 
 #define AB_SUBVIEW_XGAP   (20.0f)
 #define AB_SUBVIEW_YGAP   (30.0f)
@@ -48,16 +48,6 @@
     [self layoutVCSubView];
     
     [self setTextFieldColor];
-    
-    // 检查是否支持 Apple Pay，并指定支持的网络（基于你的代码）
-    NSArray<PKPaymentNetwork> *supportedNetworks = @[PKPaymentNetworkVisa, PKPaymentNetworkMasterCard, PKPaymentNetworkAmex];
-    if ([PKPaymentAuthorizationViewController canMakePaymentsUsingNetworks:supportedNetworks]) {
-        // 显示 Apple Pay 按钮
-        NSLog(@"显示 Apple Pay 按钮");
-    } else {
-        // 隐藏按钮或显示提示
-        NSLog(@"隐藏按钮或显示提示");
-    }
 }
 
 - (void)setTextFieldColor
@@ -103,7 +93,7 @@
     
 
     // NOTE: 支付按钮，模拟支付流程
-    CGFloat originalPosY = AB_SUBVIEW_YGAP + 50;
+    CGFloat originalPosY = AB_SUBVIEW_YGAP;
     [self generateBtnWithTitle:@"国际信用卡支付_2.1" selector:@selector(doABPay_2_1) posy:originalPosY];
     
     [self generateBtnWithTitle:@"切换仿真环境" selector:@selector(changeToDisTest) posy:originalPosY + AB_BUTTON_HEIGHT + 10];
@@ -115,7 +105,7 @@
 //    // NOTE: 支付按钮，模拟支付流程
 //    originalPosY += (AB_BUTTON_HEIGHT + AB_SUBVIEW_YGAP);
 //    [self generateBtnWithTitle:@"国际信用卡支付_2.0" selector:@selector(doABPay_2) posy:originalPosY];
-//
+//    
 //    // NOTE: 支付按钮，模拟支付流程
 //    originalPosY += (AB_BUTTON_HEIGHT + AB_SUBVIEW_YGAP);
 //    [self generateBtnWithTitle:@"海外本地支付_1.0" selector:@selector(doABPay_1) posy:originalPosY];
@@ -142,9 +132,9 @@
 
 - (void)changeToDisTest {
     _paymentsEnvironmentTF.text = @"1";
-    _merNoTF.text = @"12246";
-    _signKeyTF.text = @"12H4567r";
-    _gatewayNoTF.text = @"12246002";
+    _merNoTF.text = @"12200";
+    _signKeyTF.text = @"12345678";
+    _gatewayNoTF.text = @"12200001";
 }
 
 - (void)changeTest {
@@ -153,7 +143,6 @@
     _signKeyTF.text = @"12345678";
     _gatewayNoTF.text = @"12184001";
 }
-
 #pragma mark - 创建customerId
 - (void)createCustomerIDAction
 {
@@ -163,7 +152,7 @@
     __weak typeof(self) weakSelf = self;
     // 先创建 SessionToken
     NSInteger env = _paymentsEnvironmentTF.text.length ? [_paymentsEnvironmentTF.text integerValue] : 0;
-    [ABHttpRequest createSessionTokenWithMerNo:_merNoTF.text.length?_merNoTF.text:MERNO gatewayNo:_gatewayNoTF.text.length?_gatewayNoTF.text:GATEWAYNO paymentsEnvironment:env completionBlock:^(NSDictionary * _Nullable resultDic, NSError * _Nullable error) {
+    [ABHttpRequest createSessionTokenWithMerNo:_merNoTF.text gatewayNo:_gatewayNoTF.text paymentsEnvironment:env signKey:_signKeyTF.text completionBlock:^(NSDictionary * _Nullable resultDic, NSError * _Nullable error) {
         
         if (!error) {
             NSString *sessionToken = [[resultDic objectForKey:@"data"] objectForKey:@"sessionToken"];
@@ -207,7 +196,7 @@
     __weak typeof(self) weakSelf = self;
     // 生成 SessionToken
     NSInteger env = _paymentsEnvironmentTF.text.length ? [_paymentsEnvironmentTF.text integerValue] : 0;
-    [ABHttpRequest createSessionTokenWithMerNo:_merNoTF.text.length?_merNoTF.text:MERNO gatewayNo:_gatewayNoTF.text.length?_gatewayNoTF.text:GATEWAYNO paymentsEnvironment:env completionBlock:^(NSDictionary * _Nullable resultDic, NSError * _Nullable error) {
+    [ABHttpRequest createSessionTokenWithMerNo:_merNoTF.text.length?_merNoTF.text:MERNO gatewayNo:_gatewayNoTF.text.length?_gatewayNoTF.text:GATEWAYNO paymentsEnvironment:env signKey:_signKeyTF.text completionBlock:^(NSDictionary * _Nullable resultDic, NSError * _Nullable error) {
         
         // 销毁提示框
         [ZSProgressHUD hideAllHUDAnimated:NO];
@@ -239,7 +228,11 @@
             if (code == 1000) {
                 NSLog(@"用户自行点击返回");
             } else {
-                [ABPaymentResultView show:code];
+                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:resultDic
+                                                                   options:NSJSONWritingPrettyPrinted
+                                                                     error:nil];
+                NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                [ABPaymentResultView show:code errorDesc:jsonString];
             }
             
         }];
@@ -281,7 +274,7 @@
     [[ABPayManager sharedManager] payOrder:orderInfo fromScheme:@"" callback:^(NSDictionary *resultDic) {
             
         ResultCode code = [[resultDic objectForKey:@"code"] integerValue];
-        [ABPaymentResultView show:code];
+        [ABPaymentResultView show:code errorDesc:@""];
         
         NSLog(@"---1.0支付返回数据：%@",resultDic);
     }];
@@ -476,7 +469,7 @@
     order.paymentMethod = @"Credit Card";
     
     // 信用卡卡种
-    order.cardType = @[@"Visa",@"Master",@"American Express",@"JCB",@"Discover",@"Maestro",@"Dinners club"];
+    order.cardType = @[@"Visa",@"Master card",@"American Express",@"JCB",@"Discover",@"Maestro",@"Dinners club"];
 
     // 名
     order.firstName = @"FL";
@@ -511,12 +504,13 @@
     
     order.goodsDetail = @[@{@"goodscount":@"5",@"goodsprice":@"10",@"goodstitle":@"product one"},@{@"goodscount":@"5",@"goodsprice":@"10.6",@"goodstitle":@"product two"},@{@"goodscount":@"5",@"goodsprice":@"20.2",@"goodstitle":@"product three"}];
     
-    // 支付环境 0:测试环境; 1:仿真环境; 2:线上生产环境 (支付环境不传默认是线上环境 2)
-    order.paymentsEnvironment = _paymentsEnvironmentTF.text.length ? [_paymentsEnvironmentTF.text integerValue] : 0;
     // 如果需要使用ApplePay，必须传入appleMerchantId -- 在dev后台生成
     order.appleMerchantId = @"merchant.com.applepay.moneycollect";
-    // 商品描述
     order.productDes = @"Asiabill";
+    
+    // 支付环境 0:测试环境; 1:仿真环境; 2:线上生产环境 (支付环境不传默认是线上环境 2)
+    order.paymentsEnvironment = _paymentsEnvironmentTF.text.length ? [_paymentsEnvironmentTF.text integerValue] : 0;
+    
     return order;
 }
 
@@ -537,7 +531,7 @@
 //    [self createCustomerId];
     
 //    NSString *str = @"";
-//
+//    
 //    NSAssert([str hasPrefix:@"hh"], @"断言提示");
     
 }

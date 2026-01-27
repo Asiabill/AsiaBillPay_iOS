@@ -58,13 +58,16 @@
 }
 
 
-+ (void)show:(ResultCode)code
++ (void)show:(ResultCode)code errorDesc:(NSString *)errorStr
 {
     CGFloat TopStatusBarH = [[UIApplication sharedApplication] statusBarFrame].size.height;
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     
     ABPaymentResultView *paymentResultView = [[[NSBundle mainBundle] loadNibNamed:@"ABPaymentResultView" owner:self options:nil] firstObject];
     paymentResultView.frame = CGRectMake(0, window.bounds.size.height, window.bounds.size.width, window.bounds.size.height);
+    if (errorStr != nil) {
+        paymentResultView.toastLabel.text = errorStr;
+    }
     [window addSubview:paymentResultView];
     
     NSDictionary *orderInfoDic = [[NSUserDefaults standardUserDefaults] objectForKey:@"orderInfoDic"];
@@ -93,7 +96,6 @@
         paymentResultView.titleLB.textColor = [UIColor colorWithRed:36.0f / 255.0f green:187.0f / 255.0f blue:186.0f / 255.0f alpha:1.0f];
         
     }
-    
     
     // 弹出动画
     [UIView animateWithDuration:0.25 animations:^{

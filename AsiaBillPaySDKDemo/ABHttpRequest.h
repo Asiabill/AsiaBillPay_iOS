@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ABHttpRequest : NSObject
 
-+ (void)createSessionTokenWithMerNo:(NSString *)merNo gatewayNo:(NSString *)gatewayNo paymentsEnvironment:(NSInteger)paymentsEnvironment completionBlock:(RequestCompletionBlock)completionBlock;
++ (void)createSessionTokenWithMerNo:(NSString *)merNo gatewayNo:(NSString *)gatewayNo paymentsEnvironment:(NSInteger)paymentsEnvironment signKey:(NSString *)signKey completionBlock:(RequestCompletionBlock)completionBlock;
 
 + (void)createCustomerIdWithSessionToken:(NSString *)sessionToken paymentsEnvironment:(NSInteger)paymentsEnvironment completionBlock:(RequestCompletionBlock)completionBlock;
 

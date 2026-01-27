@@ -12,8 +12,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ABPaymentResultView : UIView
+@property (weak, nonatomic) IBOutlet UILabel *toastLabel;
 
-+ (void)show:(ResultCode)code;
++ (void)show:(ResultCode)code errorDesc:(NSString *)errorStr;
 
 @end
 
