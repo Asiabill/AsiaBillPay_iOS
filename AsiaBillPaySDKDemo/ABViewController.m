@@ -128,6 +128,7 @@
     _merNoTF.text = @"10000";
     _signKeyTF.text = @"12345678";
     _gatewayNoTF.text = @"10000001";
+    _orderAmountTF.text = @"0.01";
 }
 
 - (void)changeToDisTest {
@@ -135,6 +136,7 @@
     _merNoTF.text = @"12200";
     _signKeyTF.text = @"12345678";
     _gatewayNoTF.text = @"12200001";
+    _orderAmountTF.text = @"1";
 }
 
 - (void)changeTest {
@@ -142,6 +144,7 @@
     _merNoTF.text = @"12184";
     _signKeyTF.text = @"12345678";
     _gatewayNoTF.text = @"12184001";
+    _orderAmountTF.text = @"1";
 }
 #pragma mark - 创建customerId
 - (void)createCustomerIDAction
