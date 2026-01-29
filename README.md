@@ -95,3 +95,61 @@
 仅接收浏览器端的支付结果是存在风险的，商户网站可能因用户网络或者用户关闭网页导致不能获取到支付结果。建议商户接收 AsiaBill 的支付
 结果异步通知，可以通过在收集 ABPayOrderInfo 支付信息步骤中设置 callbackUrl 来指定接收地址。
 ```
+
+# AsiabillPaySDK\_iOS 集成文档（ApplePay）
+
+*   前期准备：
+    
+    *   对接Asiabill客服，获取.csr文件
+        
+    *   创建Merchant IDs: [https://developer.apple.com/account](https://developer.apple.com/account)
+        
+        *   developer - Certificates, Identifiers & Profiles - Identifiers
+            
+            *   点击Identifiers右边的“+”，新建Merchant IDs
+                
+    *   创建Apple Pay Payment Processing Certificate，使用上面获取的.csr文件生成
+        
+    *   创建Apple Pay Merchant Identity Certificate，使用自己的.csr文件生成（注：不需要使用上面粘获取的.csr文件）
+        
+    *   下载Apple Pay Merchant Identity Certificate，将.cer文件上传给客服，Asiabill将会进行托管。
+        
+    *   Merchant ID，证书都生成好之后，点击ID会展示这样的界面
+        
+        *   ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bX8VyvpOBQ/img/e0ddc968-1a6e-45b3-acdc-f90455d6c3ca.png)
+            
+    
+*   **项目集成：**
+    
+    *   **xCode部分**
+        
+        *   **点击xcode边栏工程 - TARGETS - Capability - 点击“+”，添加ApplePay**
+            
+            *   ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bX8VyvpOBQ/img/8533ceec-7830-4ee5-b74b-d9f35625521f.png)
+                
+        *   **如上图勾选准备时创建的**Merchant ID，并且更新profile文件
+            
+    *   代码部分：
+        
+        *   在需要调用AsiabillPaySDK的文件中引入头文件 
+            
+            ```objective-c
+            #import <PassKit/PassKit.h>
+            ```
+            
+        *   如果需要支持ApplePay，在创建orderInfo的时候需要加入下面代码：
+            
+            *   注：appleMerchantId，必须是在developer后端创建的id
+                
+            
+            ```objective-c
+            // 如果需要使用ApplePay，必须传入appleMerchantId -- 在dev后台生成
+            order.appleMerchantId = @"merchant.com.applepay.asiabill";
+            // 商品描述
+            order.productDes = @"Asiabill";
+            ```
+            
+        
+*   调试部分：
+    
+    *   需要自己准备测试用的Apple ID，并且改AppleID有绑定卡，能够支持支付
